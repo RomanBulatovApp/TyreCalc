@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,6 +53,10 @@
                         android:id="@+id/oldWheel_imageView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:srcCompat="@drawable/wheel_image2_1"
                         tools:ignore="MissingConstraints" />
 
@@ -133,6 +138,10 @@
                         android:id="@+id/newWheel_imageView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:srcCompat="@drawable/wheel_image3_4"
                         tools:ignore="MissingConstraints" />
 
