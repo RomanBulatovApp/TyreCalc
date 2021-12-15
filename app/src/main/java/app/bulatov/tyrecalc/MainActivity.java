@@ -503,7 +503,7 @@ public class MainActivity extends AppCompatActivity {
 
         int inLineChange = newWheel.getInLine() - oldWheel.getInLine();
         if (inLineChange > 0) specification4_textView.setText("- Внутренняя плоскость колеса сместится ближе к стойке на " + inLineChange + " мм.");
-        else if (inLineChange < 0) specification4_textView.setText("- Внутренняя плоскость колеса сместится дальне от стойки на " + Math.abs(inLineChange) + " мм.");
+        else if (inLineChange < 0) specification4_textView.setText("- Внутренняя плоскость колеса сместится дальшее от стойки на " + Math.abs(inLineChange) + " мм.");
         else specification4_textView.setText("- Внутренняя плоскость колеса не сместится.");
 
         specification5_textView.setText("- При показаниях спидометра 60 км/ч реальная скорость составит " + newWheel.getSpeed60(oldWheel.getDiameterMM()) + " км/ч.");
