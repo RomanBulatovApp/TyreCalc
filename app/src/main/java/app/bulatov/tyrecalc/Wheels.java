@@ -26,17 +26,17 @@ class Wheel {
 
     public int getWidth() {return width;}
     public int getHeight() {return height;}
-    public int getRimDiameterMM() {return R * 254 / 10;}
+    public float getRimDiameterMM() {return R * 254f / 10;}
     public int getJJ() {return jj;}
     public int getET() {return et;}
-    public int getDiameterMM() {return width * height * 2 / 100 + R * 254 / 10;}
+    public float getDiameterMM() {return width * height * 2f / 100 + getRimDiameterMM();}
     public int getOutLine() {return (width + 1) / 2 - et;}
     public int getInLine() {return (width + 1) / 2 + et;}
-    public float getSpeed60(int oldDiameter) {
-        return Math.round(600f / oldDiameter * getDiameterMM()) / 10f;
+    public float getSpeed60(float oldDiameter) {
+        return Math.round(600 / oldDiameter * getDiameterMM()) / 10f;
     }
-    public float getSpeed90(int oldDiameter) {
-        return Math.round(900f / oldDiameter * getDiameterMM()) / 10f;
+    public float getSpeed90(float oldDiameter) {
+        return Math.round(900 / oldDiameter * getDiameterMM()) / 10f;
     }
 
 }

@@ -324,10 +324,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setShapes() {
 
-        int oldWheelDiam = oldWheel.getDiameterMM();
-        int newWheelDiam = newWheel.getDiameterMM();
-        int oldRimDiam = oldWheel.getRimDiameterMM();
-        int newRimDiam = newWheel.getRimDiameterMM();
+        float oldWheelDiam = oldWheel.getDiameterMM();
+        float newWheelDiam = newWheel.getDiameterMM();
+        float oldRimDiam = oldWheel.getRimDiameterMM();
+        float newRimDiam = newWheel.getRimDiameterMM();
         int oldWidth = oldWheel.getWidth();
         int newWidth = newWheel.getWidth();
 
@@ -349,7 +349,7 @@ public class MainActivity extends AppCompatActivity {
         final float scale = getResources().getDisplayMetrics().density;
 
         // получаем количество мм в одном dp: максимальный круг 190х190 dp, мы обозначим больший диаметр этим размером на схеме, а остальные рассчитаем от него.
-        float mmInDp = Math.max(oldWheelDiam, newWheelDiam) / 180f;
+        float mmInDp = Math.max(oldWheelDiam, newWheelDiam) / 180;
 
         // Изменяем размеры кругов и схем колес и дисков
         // ставим размер и расположение круга и схемы старого колеса
@@ -403,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
         newSpeed60_textView.setText(newWheel.getSpeed60(oldWheel.getDiameterMM()) + " км/ч");
         newSpeed90_textView.setText(newWheel.getSpeed90(oldWheel.getDiameterMM()) + " км/ч");
 
-        int horizonLine = (newWheel.getDiameterMM() - oldWheel.getDiameterMM()) / 2;
+        float horizonLine = Math.round(newWheel.getDiameterMM()*10 - oldWheel.getDiameterMM()*10) / 20f;
         if ((horizonLine) > 0) {
             upLine_textView.setText("+" + horizonLine);
             downLine_textView.setText("+" + horizonLine);
@@ -432,73 +432,73 @@ public class MainActivity extends AppCompatActivity {
         String caution3 = "";
 
         switch (oldWheel.getJJ()) {
-            case 40:  if (oldWheel.getWidth() > 155) caution1 = "КОЛЕСО 1: При ширине диска 4\" рекомендуеамая ширина шины до 155 мм.\n"; break;
-            case 45:  if (oldWheel.getWidth() > 165) caution1 = "КОЛЕСО 1: При ширине диска 4.5\" рекомендуеамая ширина шины до 165 мм.\n"; break;
-            case 50:  if (oldWheel.getWidth() < 145 || oldWheel.getWidth() > 175) caution1 = "КОЛЕСО 1: При ширине диска 5\" рекомендуеамая ширина шины от 145 мм до 175 мм.\n"; break;
-            case 55:  if (oldWheel.getWidth() < 155 || oldWheel.getWidth() > 195) caution1 = "КОЛЕСО 1: При ширине диска 5,5\" рекомендуеамая ширина шины от 155 мм до 195 мм.\n"; break;
-            case 60:  if (oldWheel.getWidth() < 165 || oldWheel.getWidth() > 205) caution1 = "КОЛЕСО 1: При ширине диска 6\" рекомендуеамая ширина шины от 165 мм до 205 мм.\n"; break;
-            case 65:  if (oldWheel.getWidth() < 175 || oldWheel.getWidth() > 215) caution1 = "КОЛЕСО 1: При ширине диска 6,5\" рекомендуеамая ширина шины от 175 мм до 215 мм.\n"; break;
-            case 70:  if (oldWheel.getWidth() < 185 || oldWheel.getWidth() > 225) caution1 = "КОЛЕСО 1: При ширине диска 7\" рекомендуеамая ширина шины от 185 мм до 225 мм.\n"; break;
-            case 75:  if (oldWheel.getWidth() < 205 || oldWheel.getWidth() > 245) caution1 = "КОЛЕСО 1: При ширине диска 7,5\" рекомендуеамая ширина шины от 205 мм до 245 мм.\n"; break;
-            case 80:  if (oldWheel.getWidth() < 215 || oldWheel.getWidth() > 255) caution1 = "КОЛЕСО 1: При ширине диска 8\" рекомендуеамая ширина шины от 215 мм до 255 мм.\n"; break;
-            case 85:  if (oldWheel.getWidth() < 225 || oldWheel.getWidth() > 265) caution1 = "КОЛЕСО 1: При ширине диска 8,5\" рекомендуеамая ширина шины от 225 мм до 265 мм.\n"; break;
-            case 90:  if (oldWheel.getWidth() < 235 || oldWheel.getWidth() > 275) caution1 = "КОЛЕСО 1: При ширине диска 9\" рекомендуеамая ширина шины от 235 мм до 275 мм.\n"; break;
-            case 95:  if (oldWheel.getWidth() < 255 || oldWheel.getWidth() > 295) caution1 = "КОЛЕСО 1: При ширине диска 9,5\" рекомендуеамая ширина шины от 255 мм до 295 мм.\n"; break;
-            case 100: if (oldWheel.getWidth() < 265 || oldWheel.getWidth() > 305) caution1 = "КОЛЕСО 1: При ширине диска 10\" рекомендуеамая ширина шины от 265 мм до 305 мм.\n"; break;
-            case 105: if (oldWheel.getWidth() < 275 || oldWheel.getWidth() > 315) caution1 = "КОЛЕСО 1: При ширине диска 10,5\" рекомендуеамая ширина шины от 275 мм до 315 мм.\n"; break;
-            case 110: if (oldWheel.getWidth() < 285 || oldWheel.getWidth() > 325) caution1 = "КОЛЕСО 1: При ширине диска 11\" рекомендуеамая ширина шины от 285 мм до 325 мм.\n"; break;
-            case 115: if (oldWheel.getWidth() < 305 || oldWheel.getWidth() > 345) caution1 = "КОЛЕСО 1: При ширине диска 11,5\" рекомендуеамая ширина шины от 305 мм до 345 мм.\n"; break;
-            case 120: if (oldWheel.getWidth() < 315) caution1 = "КОЛЕСО 1: При ширине диска 12\" рекомендуеамая ширина шины от 315 мм.\n"; break;
-            case 125: if (oldWheel.getWidth() < 325) caution1 = "КОЛЕСО 1: При ширине диска 12,5\" рекомендуеамая ширина шины от 225 мм.\n"; break;
-            case 130: if (oldWheel.getWidth() < 335) caution1 = "КОЛЕСО 1: При ширине диска 13\" рекомендуеамая ширина шины от 235 мм.\n"; break;
+            case 40:  if (oldWheel.getWidth() > 155) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 4\" рекомендуеамая ширина шины до 155 мм.\n"; break;
+            case 45:  if (oldWheel.getWidth() > 165) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 4.5\" рекомендуеамая ширина шины до 165 мм.\n"; break;
+            case 50:  if (oldWheel.getWidth() < 145 || oldWheel.getWidth() > 175) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 5\" рекомендуеамая ширина шины от 145 мм до 175 мм.\n"; break;
+            case 55:  if (oldWheel.getWidth() < 155 || oldWheel.getWidth() > 195) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 5,5\" рекомендуеамая ширина шины от 155 мм до 195 мм.\n"; break;
+            case 60:  if (oldWheel.getWidth() < 165 || oldWheel.getWidth() > 205) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 6\" рекомендуеамая ширина шины от 165 мм до 205 мм.\n"; break;
+            case 65:  if (oldWheel.getWidth() < 175 || oldWheel.getWidth() > 215) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 6,5\" рекомендуеамая ширина шины от 175 мм до 215 мм.\n"; break;
+            case 70:  if (oldWheel.getWidth() < 185 || oldWheel.getWidth() > 225) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 7\" рекомендуеамая ширина шины от 185 мм до 225 мм.\n"; break;
+            case 75:  if (oldWheel.getWidth() < 205 || oldWheel.getWidth() > 245) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 7,5\" рекомендуеамая ширина шины от 205 мм до 245 мм.\n"; break;
+            case 80:  if (oldWheel.getWidth() < 215 || oldWheel.getWidth() > 255) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 8\" рекомендуеамая ширина шины от 215 мм до 255 мм.\n"; break;
+            case 85:  if (oldWheel.getWidth() < 225 || oldWheel.getWidth() > 265) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 8,5\" рекомендуеамая ширина шины от 225 мм до 265 мм.\n"; break;
+            case 90:  if (oldWheel.getWidth() < 235 || oldWheel.getWidth() > 275) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 9\" рекомендуеамая ширина шины от 235 мм до 275 мм.\n"; break;
+            case 95:  if (oldWheel.getWidth() < 255 || oldWheel.getWidth() > 295) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 9,5\" рекомендуеамая ширина шины от 255 мм до 295 мм.\n"; break;
+            case 100: if (oldWheel.getWidth() < 265 || oldWheel.getWidth() > 305) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 10\" рекомендуеамая ширина шины от 265 мм до 305 мм.\n"; break;
+            case 105: if (oldWheel.getWidth() < 275 || oldWheel.getWidth() > 315) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 10,5\" рекомендуеамая ширина шины от 275 мм до 315 мм.\n"; break;
+            case 110: if (oldWheel.getWidth() < 285 || oldWheel.getWidth() > 325) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 11\" рекомендуеамая ширина шины от 285 мм до 325 мм.\n"; break;
+            case 115: if (oldWheel.getWidth() < 305 || oldWheel.getWidth() > 345) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 11,5\" рекомендуеамая ширина шины от 305 мм до 345 мм.\n"; break;
+            case 120: if (oldWheel.getWidth() < 315) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 12\" рекомендуеамая ширина шины от 315 мм.\n"; break;
+            case 125: if (oldWheel.getWidth() < 325) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 12,5\" рекомендуеамая ширина шины от 225 мм.\n"; break;
+            case 130: if (oldWheel.getWidth() < 335) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 13\" рекомендуеамая ширина шины от 235 мм.\n"; break;
             default: caution1 = "";
         }
 
         switch (newWheel.getJJ()) {
-            case 40:  if (newWheel.getWidth() > 155) caution2 = "КОЛЕСО 2: При ширине диска 4\" рекомендуеамая ширина шины до 155 мм.\n"; break;
-            case 45:  if (newWheel.getWidth() > 165) caution2 = "КОЛЕСО 2: При ширине диска 4.5\" рекомендуеамая ширина шины до 165 мм.\n"; break;
-            case 50:  if (newWheel.getWidth() < 145 || newWheel.getWidth() > 175) caution2 = "КОЛЕСО 2: При ширине диска 5\" рекомендуеамая ширина шины от 145 мм до 175 мм.\n"; break;
-            case 55:  if (newWheel.getWidth() < 155 || newWheel.getWidth() > 195) caution2 = "КОЛЕСО 2: При ширине диска 5,5\" рекомендуеамая ширина шины от 155 мм до 195 мм.\n"; break;
-            case 60:  if (newWheel.getWidth() < 165 || newWheel.getWidth() > 205) caution2 = "КОЛЕСО 2: При ширине диска 6\" рекомендуеамая ширина шины от 165 мм до 205 мм.\n"; break;
-            case 65:  if (newWheel.getWidth() < 175 || newWheel.getWidth() > 215) caution2 = "КОЛЕСО 2: При ширине диска 6,5\" рекомендуеамая ширина шины от 175 мм до 215 мм.\n"; break;
-            case 70:  if (newWheel.getWidth() < 185 || newWheel.getWidth() > 225) caution2 = "КОЛЕСО 2: При ширине диска 7\" рекомендуеамая ширина шины от 185 мм до 225 мм.\n"; break;
-            case 75:  if (newWheel.getWidth() < 205 || newWheel.getWidth() > 245) caution2 = "КОЛЕСО 2: При ширине диска 7,5\" рекомендуеамая ширина шины от 205 мм до 245 мм.\n"; break;
-            case 80:  if (newWheel.getWidth() < 215 || newWheel.getWidth() > 255) caution2 = "КОЛЕСО 2: При ширине диска 8\" рекомендуеамая ширина шины от 215 мм до 255 мм.\n"; break;
-            case 85:  if (newWheel.getWidth() < 225 || newWheel.getWidth() > 265) caution2 = "КОЛЕСО 2: При ширине диска 8,5\" рекомендуеамая ширина шины от 225 мм до 265 мм.\n"; break;
-            case 90:  if (newWheel.getWidth() < 235 || newWheel.getWidth() > 275) caution2 = "КОЛЕСО 2: При ширине диска 9\" рекомендуеамая ширина шины от 235 мм до 275 мм.\n"; break;
-            case 95:  if (newWheel.getWidth() < 255 || newWheel.getWidth() > 295) caution2 = "КОЛЕСО 2: При ширине диска 9,5\" рекомендуеамая ширина шины от 255 мм до 295 мм.\n"; break;
-            case 100: if (newWheel.getWidth() < 265 || newWheel.getWidth() > 305) caution2 = "КОЛЕСО 2: При ширине диска 10\" рекомендуеамая ширина шины от 265 мм до 305 мм.\n"; break;
-            case 105: if (newWheel.getWidth() < 275 || newWheel.getWidth() > 315) caution2 = "КОЛЕСО 2: При ширине диска 10,5\" рекомендуеамая ширина шины от 275 мм до 315 мм.\n"; break;
-            case 110: if (newWheel.getWidth() < 285 || newWheel.getWidth() > 325) caution2 = "КОЛЕСО 2: При ширине диска 11\" рекомендуеамая ширина шины от 285 мм до 325 мм.\n"; break;
-            case 115: if (newWheel.getWidth() < 305 || newWheel.getWidth() > 345) caution2 = "КОЛЕСО 2: При ширине диска 11,5\" рекомендуеамая ширина шины от 305 мм до 345 мм.\n"; break;
-            case 120: if (newWheel.getWidth() < 315) caution2 = "КОЛЕСО 2: При ширине диска 12\" рекомендуеамая ширина шины от 315 мм до 345 мм.\n"; break;
-            case 125: if (newWheel.getWidth() < 325) caution2 = "КОЛЕСО 2: При ширине диска 12,5\" рекомендуеамая ширина шины от 225 мм.\n"; break;
-            case 130: if (newWheel.getWidth() < 335) caution2 = "КОЛЕСО 2: При ширине диска 13\" рекомендуеамая ширина шины от 235 мм.\n"; break;
+            case 40:  if (newWheel.getWidth() > 155) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 4\" рекомендуеамая ширина шины до 155 мм.\n"; break;
+            case 45:  if (newWheel.getWidth() > 165) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 4.5\" рекомендуеамая ширина шины до 165 мм.\n"; break;
+            case 50:  if (newWheel.getWidth() < 145 || newWheel.getWidth() > 175) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 5\" рекомендуеамая ширина шины от 145 мм до 175 мм.\n"; break;
+            case 55:  if (newWheel.getWidth() < 155 || newWheel.getWidth() > 195) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 5,5\" рекомендуеамая ширина шины от 155 мм до 195 мм.\n"; break;
+            case 60:  if (newWheel.getWidth() < 165 || newWheel.getWidth() > 205) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 6\" рекомендуеамая ширина шины от 165 мм до 205 мм.\n"; break;
+            case 65:  if (newWheel.getWidth() < 175 || newWheel.getWidth() > 215) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 6,5\" рекомендуеамая ширина шины от 175 мм до 215 мм.\n"; break;
+            case 70:  if (newWheel.getWidth() < 185 || newWheel.getWidth() > 225) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 7\" рекомендуеамая ширина шины от 185 мм до 225 мм.\n"; break;
+            case 75:  if (newWheel.getWidth() < 205 || newWheel.getWidth() > 245) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 7,5\" рекомендуеамая ширина шины от 205 мм до 245 мм.\n"; break;
+            case 80:  if (newWheel.getWidth() < 215 || newWheel.getWidth() > 255) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 8\" рекомендуеамая ширина шины от 215 мм до 255 мм.\n"; break;
+            case 85:  if (newWheel.getWidth() < 225 || newWheel.getWidth() > 265) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 8,5\" рекомендуеамая ширина шины от 225 мм до 265 мм.\n"; break;
+            case 90:  if (newWheel.getWidth() < 235 || newWheel.getWidth() > 275) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 9\" рекомендуеамая ширина шины от 235 мм до 275 мм.\n"; break;
+            case 95:  if (newWheel.getWidth() < 255 || newWheel.getWidth() > 295) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 9,5\" рекомендуеамая ширина шины от 255 мм до 295 мм.\n"; break;
+            case 100: if (newWheel.getWidth() < 265 || newWheel.getWidth() > 305) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 10\" рекомендуеамая ширина шины от 265 мм до 305 мм.\n"; break;
+            case 105: if (newWheel.getWidth() < 275 || newWheel.getWidth() > 315) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 10,5\" рекомендуеамая ширина шины от 275 мм до 315 мм.\n"; break;
+            case 110: if (newWheel.getWidth() < 285 || newWheel.getWidth() > 325) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 11\" рекомендуеамая ширина шины от 285 мм до 325 мм.\n"; break;
+            case 115: if (newWheel.getWidth() < 305 || newWheel.getWidth() > 345) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 11,5\" рекомендуеамая ширина шины от 305 мм до 345 мм.\n"; break;
+            case 120: if (newWheel.getWidth() < 315) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 12\" рекомендуеамая ширина шины от 315 мм до 345 мм.\n"; break;
+            case 125: if (newWheel.getWidth() < 325) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 12,5\" рекомендуеамая ширина шины от 225 мм.\n"; break;
+            case 130: if (newWheel.getWidth() < 335) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 13\" рекомендуеамая ширина шины от 235 мм.\n"; break;
             default: caution2 = "";
         }
 
         float changePercent = Math.round((newWheel.getDiameterMM()-oldWheel.getDiameterMM()) / ((oldWheel.getDiameterMM())/100f) * 10) / 10f;
-        if (changePercent > 3) caution3 = "Внешний диаметр колеса увеличится на " + changePercent + "%. Показания спидометра значительно исказятся.";
-        else if (changePercent < -3) caution3 = "Внешний диаметр колеса уменьшится на " + Math.abs(changePercent) + "%. Показания спидометра значительно исказятся.";
+        if (changePercent > 3) caution3 = "Внешний диаметр колеса увеличится на " + changePercent + "%. Рекомендуемая разница не более 3%.";
+        else if (changePercent < -3) caution3 = "Внешний диаметр колеса уменьшится на " + Math.abs(changePercent) + "%. Рекомендуемая разница не более 3%.";
         else caution3 = "";
 
         caution_textView.setText(caution1 + caution2 + caution3);
     }
     private void setSpecification() {
 
-        int changeDiameter = newWheel.getDiameterMM() - oldWheel.getDiameterMM();
+        float changeDiameter = Math.round(newWheel.getDiameterMM()*10 - oldWheel.getDiameterMM()*10) / 10f;
         if (changeDiameter > 0) specification1_textView.setText("- Диаметр колеса увеличится на " + changeDiameter + " мм.");
         else if (changeDiameter < 0) specification1_textView.setText("- Диаметр колеса уменьшится на " + Math.abs(changeDiameter) + " мм.");
         else specification1_textView.setText("- Диаметр колеса не изменится.");
 
-        int clearanceChange = (newWheel.getDiameterMM() - oldWheel.getDiameterMM()) / 2;
+        float clearanceChange = Math.round(newWheel.getDiameterMM()*10 - oldWheel.getDiameterMM()*10) / 20f;
         if (clearanceChange > 0) specification2_textView.setText("- Клиренс автомобиля увеличится на " + clearanceChange + " мм.");
         else if (clearanceChange < 0) specification2_textView.setText("- Клиренс автомобиля уменьшится на " + Math.abs(clearanceChange) + " мм.");
         else specification2_textView.setText("- Клиренс автомобиля не изменится.");
 
         int outLineChange = newWheel.getOutLine() - oldWheel.getOutLine();
         if (outLineChange > 0) specification3_textView.setText("- Внешняя плоскость колеса сместится наружу на " + outLineChange + " мм.");
-        else if (outLineChange < 0) specification3_textView.setText("- Внешняя плоскость колеса сместится наружу на " + Math.abs(outLineChange) + " мм.");
+        else if (outLineChange < 0) specification3_textView.setText("- Внешняя плоскость колеса сместится внутрь на " + Math.abs(outLineChange) + " мм.");
         else specification3_textView.setText("- Внешняя плоскость колеса не сместится.");
 
         int inLineChange = newWheel.getInLine() - oldWheel.getInLine();

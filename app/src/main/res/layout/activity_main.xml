@@ -231,7 +231,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/wheel_1"
+                    android:text="@string/oldWheel"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -243,7 +243,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/wheel_2"
+                    android:text="@string/newWheel"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
