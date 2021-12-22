@@ -2,52 +2,84 @@ package app.bulatov.tyrecalc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Wheel oldWheel = new Wheel();
-    ImageView oldWheel_imageView;
-    ImageView oldWheelDiam_imageView;
-    ImageView oldRimDiam_imageView;
-    ImageView oldWheelCircuit_imageView;
-    ImageView oldRimCircuit_imageView;
-    TextView oldDiam_textView;
+    private Wheel oldWheel = new Wheel();
+    private ImageView oldWheel_imageView;
+    private ImageView oldWheelDiam_imageView;
+    private ImageView oldRimDiam_imageView;
+    private ImageView oldWheelCircuit_imageView;
+    private ImageView oldRimCircuit_imageView;
+    private TextView oldDiam_textView;
 
-    Wheel newWheel = new Wheel();
-    ImageView newWheel_imageView;
-    ImageView newWheelDiam_imageView;
-    ImageView newRimDiam_imageView;
-    ImageView newWheelCircuit_imageView;
-    ImageView newRimCircuit_imageView;
-    TextView newDiam_textView;
+    private Wheel newWheel = new Wheel();
+    private ImageView newWheel_imageView;
+    private ImageView newWheelDiam_imageView;
+    private ImageView newRimDiam_imageView;
+    private ImageView newWheelCircuit_imageView;
+    private ImageView newRimCircuit_imageView;
+    private TextView newDiam_textView;
 
-    TextView newSpeed60_textView;
-    TextView newSpeed90_textView;
-    TextView outLine_textView;
-    TextView inLine_textView;
-    TextView upLine_textView;
-    TextView downLine_textView;
+    private TextView newSpeed60_textView;
+    private TextView newSpeed90_textView;
+    private TextView outLine_textView;
+    private TextView inLine_textView;
+    private TextView upLine_textView;
+    private TextView downLine_textView;
 
-    TextView caution_textView;
-    TextView specification1_textView;
-    TextView specification2_textView;
-    TextView specification3_textView;
-    TextView specification4_textView;
-    TextView specification5_textView;
-    TextView specification6_textView;
+    private TextView caution_textView;
+    private TextView change1_textView;
+    private TextView change2_textView;
+    private TextView change3_textView;
+    private TextView change4_textView;
+    private TextView change5_textView;
+    private TextView change6_textView;
+
+    private static boolean isDisclaimerShowed;
+    private static final String APP_PREFERENCES = "values";
+    static boolean dontShowDisclaimer;
+    private static final String APP_PREFERENCES_DONT_SHOW_DISCLAIMER = "dontShowDisclaimer";
+    private int oldWidthSpinnerPosition;
+    private static final String APP_PREFERENCES_OWSPOSITION = "OWSPosition";
+    private int newWidthSpinnerPosition;
+    private static final String APP_PREFERENCES_NWSPOSITION = "NWSPosition";
+    private int oldHeightSpinnerPosition;
+    private static final String APP_PREFERENCES_OHSPOSITION = "OHSPosition";
+    private int newHeightSpinnerPosition;
+    private static final String APP_PREFERENCES_NHSPOSITION = "NHSPosition";
+    private int oldRimDiamSpinnerPosition;
+    private static final String APP_PREFERENCES_ORSPOSITION = "ORSPosition";
+    private int newRimDiamSpinnerPosition;
+    private static final String APP_PREFERENCES_NRSPOSITION = "NRSPosition";
+    private int oldJJSpinnerPosition;
+    private static final String APP_PREFERENCES_OJSPOSITION = "OJSPosition";
+    private int newJJSpinnerPosition;
+    private static final String APP_PREFERENCES_NJSPOSITION = "NJSPosition";
+    private int oldETSpinnerPosition;
+    private static final String APP_PREFERENCES_OESPOSITION = "OESPosition";
+    private int newETSpinnerPosition;
+    private static final String APP_PREFERENCES_NESPOSITION = "NESPosition";
+    private SharedPreferences values;
+
 
     final static private String[] WIDTH_VARS = {"135", "145", "155", "165", "175", "185", "195", "205", "215", "225", "235", "245", "255", "265", "275", "285", "295", "305", "315", "325", "335", "345", "355"};
     final static private String[] HEIGHT_VARS = {"25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85"};
-    final static private String[] RADIUS_VARS = {"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
+    final static private String[] RIM_DIAMETERS_VARS = {"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
     final static private String[] JJ_VARS = {"4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5", "12", "12.5", "13", "13.5", "14"};
     final static private String[] ET_VARS = {"80", "79", "76", "75", "71", "70", "69", "68", "67", "66", "65", "64", "63", "62", "61", "60", "59", "58", "57", "56", "55", "54", "53", "52", "51", "50", "49", "48", "47", "46", "45", "44", "43", "42", "41", "40", "39", "38", "37", "36", "35", "34", "33", "32", "31", "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12", "-13", "-14", "-15", "-16", "-17", "-18", "-19", "-20", "-21", "-22", "-23", "-24", "-25", "-26", "-27", "-28", "-29", "-30", "-32", "-33", "-34", "-35", "-36", "-38", "-40", "-44", "-45", "-46", "-48", "-50", "-55", "-65", "-72", "-76", "-88", "-98"};
 
@@ -55,6 +87,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        values = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        dontShowDisclaimer = values.getBoolean(APP_PREFERENCES_DONT_SHOW_DISCLAIMER, false);
+        oldWidthSpinnerPosition =   values.getInt(APP_PREFERENCES_OWSPOSITION, 8);
+        newWidthSpinnerPosition =   values.getInt(APP_PREFERENCES_NWSPOSITION, 8);
+        oldHeightSpinnerPosition =  values.getInt(APP_PREFERENCES_OHSPOSITION, 5);
+        newHeightSpinnerPosition =  values.getInt(APP_PREFERENCES_NHSPOSITION, 5);
+        oldRimDiamSpinnerPosition = values.getInt(APP_PREFERENCES_ORSPOSITION, 5);
+        newRimDiamSpinnerPosition = values.getInt(APP_PREFERENCES_NRSPOSITION, 5);
+        oldJJSpinnerPosition =      values.getInt(APP_PREFERENCES_OJSPOSITION, 6);
+        newJJSpinnerPosition =      values.getInt(APP_PREFERENCES_NJSPOSITION, 6);
+        oldETSpinnerPosition =      values.getInt(APP_PREFERENCES_OESPOSITION, 27);
+        newETSpinnerPosition =      values.getInt(APP_PREFERENCES_NESPOSITION, 27);
+
+        if(!isDisclaimerShowed && !dontShowDisclaimer){
+            isDisclaimerShowed = true;
+
+            Intent disclaimer = new Intent(MainActivity.this, DisclaimerActivity.class);
+            startActivity(disclaimer);
+        }
 
         oldWheel_imageView = findViewById(R.id.oldWheel_imageView);
         oldWheelDiam_imageView = findViewById(R.id.oldWheelDiam_imageView);
@@ -78,23 +130,26 @@ public class MainActivity extends AppCompatActivity {
         downLine_textView = findViewById(R.id.downLine_textView);
 
         caution_textView = findViewById(R.id.caution);
-        specification1_textView = findViewById(R.id.specification1);
-        specification2_textView = findViewById(R.id.specification2);
-        specification3_textView = findViewById(R.id.specification3);
-        specification4_textView = findViewById(R.id.specification4);
-        specification5_textView = findViewById(R.id.specification5);
-        specification6_textView = findViewById(R.id.specification6);
+        change1_textView = findViewById(R.id.specification1);
+        change2_textView = findViewById(R.id.specification2);
+        change3_textView = findViewById(R.id.specification3);
+        change4_textView = findViewById(R.id.specification4);
+        change5_textView = findViewById(R.id.specification5);
+        change6_textView = findViewById(R.id.specification6);
 
         // Спинеры ширины
-        ArrayAdapter<String> widthAdapter = new ArrayAdapter(this, R.layout.spinner_item, WIDTH_VARS);
+        ArrayAdapter widthAdapter = new ArrayAdapter(this, R.layout.spinner_item, WIDTH_VARS);
         widthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         TextView oldWidth_textView = findViewById(R.id.oldWidth_textView);
         Spinner oldWidthSpinner = findViewById(R.id.tyres_width_spinner1);
         oldWidthSpinner.setAdapter(widthAdapter);
+        oldWidthSpinner.setSelection(oldWidthSpinnerPosition);
         oldWidthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                oldWidthSpinnerPosition = position;
                 String chosenWidth = (String) parent.getItemAtPosition(position);
                 oldWidth_textView.setText(chosenWidth);
                 oldWheel.setWidth(chosenWidth);
@@ -105,14 +160,16 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        oldWidthSpinner.setSelection(8);
-        Spinner newWidthSpinner = findViewById(R.id.tyres_width_spinner2);
+
         TextView newWidth_textView = findViewById(R.id.newWidth_textView);
+        Spinner newWidthSpinner = findViewById(R.id.tyres_width_spinner2);
         newWidthSpinner.setAdapter(widthAdapter);
+        newWidthSpinner.setSelection(newWidthSpinnerPosition);
         newWidthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                newWidthSpinnerPosition = position;
                 String chosenWidth = (String) parent.getItemAtPosition(position);
                 newWidth_textView.setText(chosenWidth);
                 newWheel.setWidth(chosenWidth);
@@ -123,18 +180,20 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        newWidthSpinner.setSelection(8);
 
         // Спинеры профиля
         ArrayAdapter<String> heightAdapter = new ArrayAdapter(this, R.layout.spinner_item, HEIGHT_VARS);
         heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         TextView oldHeight_textView = findViewById(R.id.oldHeight_textView);
         Spinner oldHeightSpinner = findViewById(R.id.tyres_height_spinner1);
         oldHeightSpinner.setAdapter(heightAdapter);
+        oldHeightSpinner.setSelection(oldHeightSpinnerPosition);
         oldHeightSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                oldHeightSpinnerPosition = position;
                 String chosenHeight = (String) parent.getItemAtPosition(position);
                 oldHeight_textView.setText(chosenHeight);
                 oldWheel.setHeight(chosenHeight);
@@ -145,14 +204,16 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        oldHeightSpinner.setSelection(5);
+
         TextView newHeight_textView = findViewById(R.id.newHeight_textView);
         Spinner newHeightSpinner = findViewById(R.id.tyres_height_spinner2);
         newHeightSpinner.setAdapter(heightAdapter);
+        newHeightSpinner.setSelection(newHeightSpinnerPosition);
         newHeightSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                newHeightSpinnerPosition = position;
                 String chosenHeight = (String) parent.getItemAtPosition(position);
                 newHeight_textView.setText(chosenHeight);
                 newWheel.setHeight(chosenHeight);
@@ -163,18 +224,20 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        newHeightSpinner.setSelection(5);
 
         // Спинеры диаметра диска
-        ArrayAdapter<String> rimDiamAdapter = new ArrayAdapter(this, R.layout.spinner_item, RADIUS_VARS);
+        ArrayAdapter<String> rimDiamAdapter = new ArrayAdapter(this, R.layout.spinner_item, RIM_DIAMETERS_VARS);
         rimDiamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         TextView oldRimDiam_textView = findViewById(R.id.oldRimDiam_textView);
         Spinner oldRimDiamSpinner = findViewById(R.id.rimDiam_spinner1);
         oldRimDiamSpinner.setAdapter(rimDiamAdapter);
+        oldRimDiamSpinner.setSelection(oldRimDiamSpinnerPosition);
         oldRimDiamSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                oldRimDiamSpinnerPosition = position;
                 String chosenRimDiam = (String) parent.getItemAtPosition(position);
                 oldRimDiam_textView.setText(chosenRimDiam);
                 oldWheel.setR(chosenRimDiam);
@@ -185,14 +248,16 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        oldRimDiamSpinner.setSelection(5);
+
         TextView newRimDiam_textView = findViewById(R.id.newRimDiam_textView);
         Spinner newRimDiamSpinner = findViewById(R.id.rimDiam_spinner2);
         newRimDiamSpinner.setAdapter(rimDiamAdapter);
+        newRimDiamSpinner.setSelection(newRimDiamSpinnerPosition);
         newRimDiamSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                newRimDiamSpinnerPosition = position;
                 String chosenRimDiam = (String) parent.getItemAtPosition(position);
                 newRimDiam_textView.setText(chosenRimDiam);
                 newWheel.setR(chosenRimDiam);
@@ -203,18 +268,20 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        newRimDiamSpinner.setSelection(5);
 
         // Спинеры ширины диска
         ArrayAdapter<String> jjAdapter = new ArrayAdapter(this, R.layout.spinner_item, JJ_VARS);
         jjAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         TextView oldJJ_textView = findViewById(R.id.oldJJ_textView);
         Spinner oldJJSpinner = findViewById(R.id.JJ_spinner1);
         oldJJSpinner.setAdapter(jjAdapter);
+        oldJJSpinner.setSelection(oldJJSpinnerPosition);
         oldJJSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                oldJJSpinnerPosition = position;
                 String chosenJJ = (String) parent.getItemAtPosition(position);
                 oldJJ_textView.setText(chosenJJ);
                 oldWheel.setJJ(chosenJJ);
@@ -225,14 +292,16 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        oldJJSpinner.setSelection(6);
+
         TextView newJJ_textView = findViewById(R.id.newJJ_textView);
         Spinner newJJSpinner = findViewById(R.id.JJ_spinner2);
         newJJSpinner.setAdapter(jjAdapter);
+        newJJSpinner.setSelection(newJJSpinnerPosition);
         newJJSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                newJJSpinnerPosition = position;
                 String chosenJJ = (String) parent.getItemAtPosition(position);
                 newJJ_textView.setText(chosenJJ);
                 newWheel.setJJ(chosenJJ);
@@ -243,18 +312,20 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        newJJSpinner.setSelection(6);
 
         // Спинеры выноса
         ArrayAdapter<String> etAdapter = new ArrayAdapter(this, R.layout.spinner_item, ET_VARS);
         etAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         TextView oldET_textView = findViewById(R.id.oldET_textView);
         Spinner oldETSpinner = findViewById(R.id.ET_spinner1);
         oldETSpinner.setAdapter(etAdapter);
+        oldETSpinner.setSelection(oldETSpinnerPosition);
         oldETSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                oldETSpinnerPosition = position;
                 String chosenET = (String) parent.getItemAtPosition(position);
                 oldET_textView.setText(chosenET);
                 oldWheel.setET(chosenET);
@@ -265,14 +336,16 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        oldETSpinner.setSelection(27);
+
         TextView newET_textView = findViewById(R.id.newET_textView);
         Spinner newETSpinner = findViewById(R.id.ET_spinner2);
         newETSpinner.setAdapter(etAdapter);
+        newETSpinner.setSelection(newETSpinnerPosition);
         newETSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                newETSpinnerPosition = position;
                 String chosenET = (String) parent.getItemAtPosition(position);
                 newET_textView.setText(chosenET);
                 newWheel.setET(chosenET);
@@ -283,7 +356,35 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        newETSpinner.setSelection(27);
+
+        Button rareButton = findViewById(R.id.rate_button);
+        rareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("market://details?id=app.bulatov.tyrecalc"));
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Запоминаем данные
+        SharedPreferences.Editor editor = values.edit();
+        editor.putBoolean(APP_PREFERENCES_DONT_SHOW_DISCLAIMER, dontShowDisclaimer);
+        editor.putInt(APP_PREFERENCES_OWSPOSITION, oldWidthSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_NWSPOSITION, newWidthSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_OHSPOSITION, oldHeightSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_NHSPOSITION, newHeightSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_ORSPOSITION, oldRimDiamSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_NRSPOSITION, newRimDiamSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_OJSPOSITION, oldJJSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_NJSPOSITION, newJJSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_OESPOSITION, oldETSpinnerPosition);
+        editor.putInt(APP_PREFERENCES_NESPOSITION, newETSpinnerPosition);
+        editor.apply();
     }
 
     private void apply() {
@@ -487,26 +588,29 @@ public class MainActivity extends AppCompatActivity {
     private void setSpecification() {
 
         float changeDiameter = Math.round(newWheel.getDiameterMM()*10 - oldWheel.getDiameterMM()*10) / 10f;
-        if (changeDiameter > 0) specification1_textView.setText("- Диаметр колеса увеличится на " + changeDiameter + " мм.");
-        else if (changeDiameter < 0) specification1_textView.setText("- Диаметр колеса уменьшится на " + Math.abs(changeDiameter) + " мм.");
-        else specification1_textView.setText("- Диаметр колеса не изменится.");
+        if (changeDiameter > 0) change1_textView.setText("- Диаметр колеса увеличится на " + changeDiameter + " мм.");
+        else if (changeDiameter < 0) change1_textView.setText("- Диаметр колеса уменьшится на " + Math.abs(changeDiameter) + " мм.");
+        else change1_textView.setText("- Диаметр колеса не изменится.");
 
         float clearanceChange = Math.round(newWheel.getDiameterMM()*10 - oldWheel.getDiameterMM()*10) / 20f;
-        if (clearanceChange > 0) specification2_textView.setText("- Клиренс автомобиля увеличится на " + clearanceChange + " мм.");
-        else if (clearanceChange < 0) specification2_textView.setText("- Клиренс автомобиля уменьшится на " + Math.abs(clearanceChange) + " мм.");
-        else specification2_textView.setText("- Клиренс автомобиля не изменится.");
+        if (clearanceChange > 0) change2_textView.setText("- Клиренс автомобиля увеличится на " + clearanceChange + " мм.");
+        else if (clearanceChange < 0) change2_textView.setText("- Клиренс автомобиля уменьшится на " + Math.abs(clearanceChange) + " мм.");
+        else change2_textView.setText("- Клиренс автомобиля не изменится.");
 
         int outLineChange = newWheel.getOutLine() - oldWheel.getOutLine();
-        if (outLineChange > 0) specification3_textView.setText("- Внешняя плоскость колеса сместится наружу на " + outLineChange + " мм.");
-        else if (outLineChange < 0) specification3_textView.setText("- Внешняя плоскость колеса сместится внутрь на " + Math.abs(outLineChange) + " мм.");
-        else specification3_textView.setText("- Внешняя плоскость колеса не сместится.");
+        if (outLineChange > 0) change3_textView.setText("- Внешняя плоскость колеса сместится наружу на " + outLineChange + " мм.");
+        else if (outLineChange < 0) change3_textView.setText("- Внешняя плоскость колеса сместится внутрь на " + Math.abs(outLineChange) + " мм.");
+        else change3_textView.setText("- Внешняя плоскость колеса не сместится.");
 
         int inLineChange = newWheel.getInLine() - oldWheel.getInLine();
-        if (inLineChange > 0) specification4_textView.setText("- Внутренняя плоскость колеса сместится ближе к стойке на " + inLineChange + " мм.");
-        else if (inLineChange < 0) specification4_textView.setText("- Внутренняя плоскость колеса сместится дальшее от стойки на " + Math.abs(inLineChange) + " мм.");
-        else specification4_textView.setText("- Внутренняя плоскость колеса не сместится.");
+        if (inLineChange > 0) change4_textView.setText("- Внутренняя плоскость колеса сместится ближе к стойке на " + inLineChange + " мм.");
+        else if (inLineChange < 0) change4_textView.setText("- Внутренняя плоскость колеса сместится дальшее от стойки на " + Math.abs(inLineChange) + " мм.");
+        else change4_textView.setText("- Внутренняя плоскость колеса не сместится.");
 
-        specification5_textView.setText("- При показаниях спидометра 60 км/ч реальная скорость составит " + newWheel.getSpeed60(oldWheel.getDiameterMM()) + " км/ч.");
-        specification6_textView.setText("- При показаниях спидометра 90 км/ч реальная скорость составит " + newWheel.getSpeed90(oldWheel.getDiameterMM()) + " км/ч.");
+        change5_textView.setText("- При показаниях спидометра 60 км/ч реальная скорость составит " + newWheel.getSpeed60(oldWheel.getDiameterMM()) + " км/ч.");
+        change6_textView.setText("- При показаниях спидометра 90 км/ч реальная скорость составит " + newWheel.getSpeed90(oldWheel.getDiameterMM()) + " км/ч.");
+    }
+    static void saveValues(){
+
     }
 }

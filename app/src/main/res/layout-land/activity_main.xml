@@ -179,6 +179,7 @@
 
                         <Spinner
                             android:id="@+id/tyres_width_spinner1"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -197,6 +198,7 @@
 
                         <Spinner
                             android:id="@+id/tyres_width_spinner2"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -215,6 +217,7 @@
 
                         <Spinner
                             android:id="@+id/tyres_height_spinner1"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -234,6 +237,7 @@
 
                         <Spinner
                             android:id="@+id/tyres_height_spinner2"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -252,6 +256,7 @@
 
                         <Spinner
                             android:id="@+id/rimDiam_spinner1"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -270,6 +275,7 @@
 
                         <Spinner
                             android:id="@+id/rimDiam_spinner2"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -287,6 +293,7 @@
 
                         <Spinner
                             android:id="@+id/JJ_spinner1"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -305,6 +312,7 @@
 
                         <Spinner
                             android:id="@+id/JJ_spinner2"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -321,6 +329,7 @@
 
                         <Spinner
                             android:id="@+id/ET_spinner1"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -339,6 +348,7 @@
 
                         <Spinner
                             android:id="@+id/ET_spinner2"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:popupBackground="@color/dark_gray"
@@ -797,24 +807,21 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/disclaimer1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/disclaimer1"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/disclaimer2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/disclaimer2"
-                    android:textColor="@color/white" />
-
             </LinearLayout>
+
+            <Button
+                android:id="@+id/rate_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/rate"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/gray" />
 
         </LinearLayout>
 
