@@ -429,8 +429,8 @@ public class MainActivity extends AppCompatActivity {
         float newWheelDiam = newWheel.getDiameterMM();
         float oldRimDiam = oldWheel.getRimDiameterMM();
         float newRimDiam = newWheel.getRimDiameterMM();
-        int oldWidth = oldWheel.getWidth();
-        int newWidth = newWheel.getWidth();
+        int oldWidth = oldWheel.getMaxWidth();
+        int newWidth = newWheel.getMaxWidth();
 
         //Получаем параметры изображений схем:
         //параметры кругов старого колеса и диска
@@ -552,7 +552,6 @@ public class MainActivity extends AppCompatActivity {
             case 120: if (oldWheel.getWidth() < 315) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 12\" рекомендуеамая ширина шины от 315 мм.\n"; break;
             case 125: if (oldWheel.getWidth() < 325) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 12,5\" рекомендуеамая ширина шины от 225 мм.\n"; break;
             case 130: if (oldWheel.getWidth() < 335) caution1 = "СТАНДАРТНОЕ КОЛЕСО: При ширине диска 13\" рекомендуеамая ширина шины от 235 мм.\n"; break;
-            default: caution1 = "";
         }
 
         switch (newWheel.getJJ()) {
@@ -575,7 +574,6 @@ public class MainActivity extends AppCompatActivity {
             case 120: if (newWheel.getWidth() < 315) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 12\" рекомендуеамая ширина шины от 315 мм до 345 мм.\n"; break;
             case 125: if (newWheel.getWidth() < 325) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 12,5\" рекомендуеамая ширина шины от 225 мм.\n"; break;
             case 130: if (newWheel.getWidth() < 335) caution2 = "НОВОЕ КОЛЕСО: При ширине диска 13\" рекомендуеамая ширина шины от 235 мм.\n"; break;
-            default: caution2 = "";
         }
 
         float changePercent = Math.round((newWheel.getDiameterMM()-oldWheel.getDiameterMM()) / ((oldWheel.getDiameterMM())/100f) * 10) / 10f;
@@ -609,8 +607,5 @@ public class MainActivity extends AppCompatActivity {
 
         change5_textView.setText("- При показаниях спидометра 60 км/ч реальная скорость составит " + newWheel.getSpeed60(oldWheel.getDiameterMM()) + " км/ч.");
         change6_textView.setText("- При показаниях спидометра 90 км/ч реальная скорость составит " + newWheel.getSpeed90(oldWheel.getDiameterMM()) + " км/ч.");
-    }
-    static void saveValues(){
-
     }
 }

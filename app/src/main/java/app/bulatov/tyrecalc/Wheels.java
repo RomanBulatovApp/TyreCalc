@@ -25,13 +25,21 @@ class Wheel {
     }
 
     public int getWidth() {return width;}
+    public int getMaxWidth() {
+        int rimWidth = (int)Math.ceil(jj*254f/100) + 20;
+        return Math.max(width, rimWidth);
+    }
     public int getHeight() {return height;}
     public float getRimDiameterMM() {return R * 254f / 10;}
     public int getJJ() {return jj;}
     public int getET() {return et;}
     public float getDiameterMM() {return width * height * 2f / 100 + getRimDiameterMM();}
-    public int getOutLine() {return (width + 1) / 2 - et;}
-    public int getInLine() {return (width + 1) / 2 + et;}
+    public int getOutLine() {
+        return (getMaxWidth() + getMaxWidth() % 2) / 2 - et;
+    }
+    public int getInLine() {
+        return (getMaxWidth() + getMaxWidth() % 2) / 2 + et;
+    }
     public float getSpeed60(float oldDiameter) {
         return Math.round(600 / oldDiameter * getDiameterMM()) / 10f;
     }

@@ -9,7 +9,7 @@ android {
         applicationId "app.bulatov.tyrecalc"
         minSdk 16
         targetSdk 31
-        versionCode 5
+        versionCode 6
         versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
