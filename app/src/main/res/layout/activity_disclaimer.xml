@@ -55,7 +55,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:text="@string/show"
+                android:text="@string/dont_show_again"
                 android:textColor="@color/white"
                 app:buttonTint="@color/white" />
 

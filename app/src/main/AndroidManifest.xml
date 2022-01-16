@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents">
         <activity
-            android:name=".DisclaimerActivity"
-            android:label="@string/caution"
+            android:name=".RateActivity"
             android:exported="true"
+            android:label="@string/opinion"
             android:theme="@style/Theme.MaterialComponents.Dialog.Alert"/>
+        <activity
+            android:name=".DisclaimerActivity"
+            android:exported="true"
+            android:label="@string/attention"
+            android:theme="@style/Theme.MaterialComponents.Dialog.Alert" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

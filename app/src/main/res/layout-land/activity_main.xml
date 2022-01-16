@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -49,7 +50,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/oldWheel"
+                    android:text="@string/standard"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -61,7 +62,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/newWheel"
+                    android:text="@string/new_"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -81,18 +82,18 @@
                     android:id="@+id/oldWheel_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginEnd="8dp">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/oldWheel_imageView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:srcCompat="@drawable/wheel_image2_1"
                         tools:ignore="MissingConstraints" />
 
@@ -190,8 +191,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="center"
                             android:background="@color/dark"
+                            android:gravity="center"
                             android:text="@string/wheel_width"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
@@ -361,18 +362,18 @@
                     android:id="@+id/newWheel_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/newWheel_imageView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:srcCompat="@drawable/wheel_image3_4"
                         tools:ignore="MissingConstraints" />
 
@@ -453,16 +454,72 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:gravity="center"
                 android:background="@color/dark"
+                android:gravity="center"
                 android:text=""
                 android:textColor="@color/red" />
+
+            <LinearLayout
+                android:id="@+id/rate_layout"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="48dp"
+                    android:orientation="horizontal"
+                    android:background="@color/dark_gray">
+
+                    <Button
+                        android:id="@+id/rateNo_button"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:text="@string/dislike"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/rate_text"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/do_you_like_app"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/rateYes_button"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginRight="4dp"
+                        android:text="@string/like"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/gray" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/result_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:gravity="center"
                 android:text="@string/changes"
                 android:textColor="@color/white"
@@ -621,9 +678,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="150dp"
                     android:layout_height="200dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:background="@color/white">
 
                     <ImageView
@@ -787,8 +844,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:background="@color/dark"
                 android:baselineAligned="false"
                 android:orientation="vertical">
@@ -808,20 +865,6 @@
                     android:textSize="20sp" />
 
             </LinearLayout>
-
-            <Button
-                android:id="@+id/rate_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/rate"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/gray" />
 
         </LinearLayout>
 

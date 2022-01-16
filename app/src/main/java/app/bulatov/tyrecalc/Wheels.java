@@ -25,26 +25,38 @@ class Wheel {
     }
 
     public int getWidth() {return width;}
-    public int getMaxWidth() {
+    public int getHeight() {return height;}
+    public int getJJ() {return jj;}
+    public int getET() {return et;}
+
+    public int getWheelWidth() {
         int rimWidth = (int)Math.ceil(jj*254f/100) + 20;
         return Math.max(width, rimWidth);
     }
-    public int getHeight() {return height;}
     public float getRimDiameterMM() {return R * 254f / 10;}
-    public int getJJ() {return jj;}
-    public int getET() {return et;}
-    public float getDiameterMM() {return width * height * 2f / 100 + getRimDiameterMM();}
+    public float getWheelDiameterMM() {return width * height * 2f / 100 + getRimDiameterMM();}
     public int getOutLine() {
-        return (getMaxWidth() + getMaxWidth() % 2) / 2 - et;
+        return (getWheelWidth() + getWheelWidth() % 2) / 2 - et;
     }
     public int getInLine() {
-        return (getMaxWidth() + getMaxWidth() % 2) / 2 + et;
+        return (getWheelWidth() + getWheelWidth() % 2) / 2 + et;
     }
     public float getSpeed60(float oldDiameter) {
-        return Math.round(600 / oldDiameter * getDiameterMM()) / 10f;
+        return Math.round(600 / oldDiameter * getWheelDiameterMM()) / 10f;
     }
     public float getSpeed90(float oldDiameter) {
-        return Math.round(900 / oldDiameter * getDiameterMM()) / 10f;
+        return Math.round(900 / oldDiameter * getWheelDiameterMM()) / 10f;
+    }
+
+    // return min tire width with the current rim width
+    public int getMinWidth(){
+        float guess = (jj/10f * 254 + 91 - 50)/100;
+        return Math.round(guess)*10 + 5;
+    }
+    // return max tire width with the current rim width
+    public int getMaxWidth(){
+        float guess = (jj/10f * 254 + 499 - 50)/100;
+        return Math.round(guess)*10 + 5;
     }
 
 }
