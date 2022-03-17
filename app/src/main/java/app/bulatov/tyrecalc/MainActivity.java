@@ -77,13 +77,9 @@ public class MainActivity extends AppCompatActivity {
         showDisclaimer();
         showRate();
 
-        // Спинеры ширины
-        ArrayAdapter<String> widthAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, WIDTH_VARS);
-        widthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        Spinner oldWidthSpinner = findViewById(R.id.oldWidth_spinner);
         TextView oldWidth_textView = findViewById(R.id.oldWidth_textView);
-        Spinner oldWidthSpinner = findViewById(R.id.tyres_width_spinner1);
-        oldWidthSpinner.setAdapter(widthAdapter);
+        oldWidthSpinner.setAdapter(getAdapter(WIDTH_VARS));
         oldWidthSpinner.setSelection(oldWidthSpinnerPosition);
         oldWidthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -101,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Spinner newWidthSpinner = findViewById(R.id.newWidth_spinner);
         TextView newWidth_textView = findViewById(R.id.newWidth_textView);
-        Spinner newWidthSpinner = findViewById(R.id.tyres_width_spinner2);
-        newWidthSpinner.setAdapter(widthAdapter);
+        newWidthSpinner.setAdapter(getAdapter(WIDTH_VARS));
         newWidthSpinner.setSelection(newWidthSpinnerPosition);
         newWidthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -121,13 +117,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Спинеры профиля
-        ArrayAdapter<String> heightAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, HEIGHT_VARS);
-        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        Spinner oldHeightSpinner = findViewById(R.id.oldHeight_spinner);
         TextView oldHeight_textView = findViewById(R.id.oldHeight_textView);
-        Spinner oldHeightSpinner = findViewById(R.id.tyres_height_spinner1);
-        oldHeightSpinner.setAdapter(heightAdapter);
+        oldHeightSpinner.setAdapter(getAdapter(HEIGHT_VARS));
         oldHeightSpinner.setSelection(oldHeightSpinnerPosition);
         oldHeightSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -145,9 +137,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Spinner newHeightSpinner = findViewById(R.id.newHeight_spinner);
         TextView newHeight_textView = findViewById(R.id.newHeight_textView);
-        Spinner newHeightSpinner = findViewById(R.id.tyres_height_spinner2);
-        newHeightSpinner.setAdapter(heightAdapter);
+        newHeightSpinner.setAdapter(getAdapter(HEIGHT_VARS));
         newHeightSpinner.setSelection(newHeightSpinnerPosition);
         newHeightSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -165,13 +157,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Спинеры диаметра диска
-        ArrayAdapter<String> rimDiamAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, RIM_DIAMETERS_VARS);
-        rimDiamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        Spinner oldRimDiamSpinner = findViewById(R.id.oldRimDiam_spinner);
         TextView oldRimDiam_textView = findViewById(R.id.oldRimDiam_textView);
-        Spinner oldRimDiamSpinner = findViewById(R.id.rimDiam_spinner1);
-        oldRimDiamSpinner.setAdapter(rimDiamAdapter);
+        oldRimDiamSpinner.setAdapter(getAdapter(RIM_DIAMETERS_VARS));
         oldRimDiamSpinner.setSelection(oldRimDiamSpinnerPosition);
         oldRimDiamSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -189,9 +177,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Spinner newRimDiamSpinner = findViewById(R.id.newRimDiam_spinner);
         TextView newRimDiam_textView = findViewById(R.id.newRimDiam_textView);
-        Spinner newRimDiamSpinner = findViewById(R.id.rimDiam_spinner2);
-        newRimDiamSpinner.setAdapter(rimDiamAdapter);
+        newRimDiamSpinner.setAdapter(getAdapter(RIM_DIAMETERS_VARS));
         newRimDiamSpinner.setSelection(newRimDiamSpinnerPosition);
         newRimDiamSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -209,13 +197,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Спинеры ширины диска
-        ArrayAdapter<String> jjAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, JJ_VARS);
-        jjAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        Spinner oldJJSpinner = findViewById(R.id.oldJJ_spinner);
         TextView oldJJ_textView = findViewById(R.id.oldJJ_textView);
-        Spinner oldJJSpinner = findViewById(R.id.JJ_spinner1);
-        oldJJSpinner.setAdapter(jjAdapter);
+        oldJJSpinner.setAdapter(getAdapter(JJ_VARS));
         oldJJSpinner.setSelection(oldJJSpinnerPosition);
         oldJJSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -233,9 +217,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Spinner newJJSpinner = findViewById(R.id.newJJ_spinner);
         TextView newJJ_textView = findViewById(R.id.newJJ_textView);
-        Spinner newJJSpinner = findViewById(R.id.JJ_spinner2);
-        newJJSpinner.setAdapter(jjAdapter);
+        newJJSpinner.setAdapter(getAdapter(JJ_VARS));
         newJJSpinner.setSelection(newJJSpinnerPosition);
         newJJSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -253,13 +237,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Спинеры выноса
-        ArrayAdapter<String> etAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, ET_VARS);
-        etAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        Spinner oldETSpinner = findViewById(R.id.oldET_spinner);
         TextView oldET_textView = findViewById(R.id.oldET_textView);
-        Spinner oldETSpinner = findViewById(R.id.ET_spinner1);
-        oldETSpinner.setAdapter(etAdapter);
+        oldETSpinner.setAdapter(getAdapter(ET_VARS));
         oldETSpinner.setSelection(oldETSpinnerPosition);
         oldETSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -277,9 +257,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Spinner newETSpinner = findViewById(R.id.newET_spinner);
         TextView newET_textView = findViewById(R.id.newET_textView);
-        Spinner newETSpinner = findViewById(R.id.ET_spinner2);
-        newETSpinner.setAdapter(etAdapter);
+        newETSpinner.setAdapter(getAdapter(ET_VARS));
         newETSpinner.setSelection(newETSpinnerPosition);
         newETSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -715,5 +695,16 @@ public class MainActivity extends AppCompatActivity {
             rate_layoutParams.height = (int) (0);
             rateLayout.setLayoutParams(rate_layoutParams);
         }
+    }
+
+    /**
+     * Создает адаптер со списком вариантов спиннера
+     * @param values список вариантов спиннера
+     * @return готовый адаптер
+     */
+    private ArrayAdapter<String> getAdapter(String[] values) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, values);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return adapter;
     }
 }

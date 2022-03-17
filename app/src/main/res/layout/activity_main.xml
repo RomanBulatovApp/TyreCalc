@@ -265,7 +265,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/tyres_width_spinner1"
+                    android:id="@+id/oldWidth_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -284,7 +284,7 @@
                     android:textSize="14sp" />
 
                 <Spinner
-                    android:id="@+id/tyres_width_spinner2"
+                    android:id="@+id/newWidth_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -307,7 +307,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/tyres_height_spinner1"
+                    android:id="@+id/oldHeight_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -327,7 +327,7 @@
                     android:textSize="14sp" />
 
                 <Spinner
-                    android:id="@+id/tyres_height_spinner2"
+                    android:id="@+id/newHeight_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -350,7 +350,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/rimDiam_spinner1"
+                    android:id="@+id/oldRimDiam_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -369,7 +369,7 @@
                     android:textSize="14sp" />
 
                 <Spinner
-                    android:id="@+id/rimDiam_spinner2"
+                    android:id="@+id/newRimDiam_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -391,7 +391,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/JJ_spinner1"
+                    android:id="@+id/oldJJ_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -410,7 +410,7 @@
                     android:textSize="14sp" />
 
                 <Spinner
-                    android:id="@+id/JJ_spinner2"
+                    android:id="@+id/newJJ_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -432,7 +432,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/ET_spinner1"
+                    android:id="@+id/oldET_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
@@ -451,7 +451,7 @@
                     android:textSize="14sp" />
 
                 <Spinner
-                    android:id="@+id/ET_spinner2"
+                    android:id="@+id/newET_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
