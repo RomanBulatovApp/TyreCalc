@@ -74,44 +74,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSavedParam();
-
-        // Дисклеймер
-        if (!dontShowDisclaimer && showDate != today.getMonth()*100 + today.getDate()) {
-            showDate = today.getMonth()*100 + today.getDate();
-            Intent disclaimer = new Intent(this, DisclaimerActivity.class);
-            startActivityForResult(disclaimer, DISCLAIMER_REQUEST_CODE);
-        }
-
-        // Оценить приложение
-        if (!dontShowRate) {
-            Intent rateIntent = new Intent(this, RateActivity.class);
-
-            Button rateYesButton = findViewById(R.id.rateYes_button);
-            rateYesButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    rateIntent.putExtra("likeApp", true);
-                    startActivityForResult(rateIntent, RATE_REQUEST_CODE);
-                }
-            });
-
-            Button rateNoButton = findViewById(R.id.rateNo_button);
-            rateNoButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    rateIntent.putExtra("likeApp", false);
-                    startActivityForResult(rateIntent, RATE_REQUEST_CODE);
-                }
-            });
-        } else {
-            LinearLayout rateLayout = findViewById(R.id.rate_layout);
-            ViewGroup.LayoutParams rate_layoutParams = rateLayout.getLayoutParams();
-            rate_layoutParams.height = (int) (0);
-            rateLayout.setLayoutParams(rate_layoutParams);
-        }
+        showDisclaimer();
+        showRate();
 
         // Спинеры ширины
-        ArrayAdapter<String> widthAdapter = new ArrayAdapter(this, R.layout.spinner_item, WIDTH_VARS);
+        ArrayAdapter<String> widthAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, WIDTH_VARS);
         widthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         TextView oldWidth_textView = findViewById(R.id.oldWidth_textView);
@@ -155,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Спинеры профиля
-        ArrayAdapter<String> heightAdapter = new ArrayAdapter(this, R.layout.spinner_item, HEIGHT_VARS);
+        ArrayAdapter<String> heightAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, HEIGHT_VARS);
         heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         TextView oldHeight_textView = findViewById(R.id.oldHeight_textView);
@@ -199,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Спинеры диаметра диска
-        ArrayAdapter<String> rimDiamAdapter = new ArrayAdapter(this, R.layout.spinner_item, RIM_DIAMETERS_VARS);
+        ArrayAdapter<String> rimDiamAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, RIM_DIAMETERS_VARS);
         rimDiamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         TextView oldRimDiam_textView = findViewById(R.id.oldRimDiam_textView);
@@ -243,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Спинеры ширины диска
-        ArrayAdapter<String> jjAdapter = new ArrayAdapter(this, R.layout.spinner_item, JJ_VARS);
+        ArrayAdapter<String> jjAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, JJ_VARS);
         jjAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         TextView oldJJ_textView = findViewById(R.id.oldJJ_textView);
@@ -287,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Спинеры выноса
-        ArrayAdapter<String> etAdapter = new ArrayAdapter(this, R.layout.spinner_item, ET_VARS);
+        ArrayAdapter<String> etAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, ET_VARS);
         etAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         TextView oldET_textView = findViewById(R.id.oldET_textView);
@@ -389,9 +356,9 @@ public class MainActivity extends AppCompatActivity {
         ImageView newWheel_imageView = findViewById(R.id.newWheel_imageView);
         setWheelView(newWheel, newWheel_imageView);
         setShapes();
-        setCautions();
+        showCautions();
         setSigns();
-        setSpecification();
+        showSpecification();
     }
 
     /**
@@ -571,7 +538,7 @@ public class MainActivity extends AppCompatActivity {
      *    - ширина шины меньше минимальной при данной ширине диска
      *    - ширина шины большще максимально допустимой при данной ширине диска
      */
-    private void setCautions() {
+    private void showCautions() {
         String caution = "";
 
         float changePercent = Math.round((newWheel.getWheelDiameterMM() - oldWheel.getWheelDiameterMM()) / ((oldWheel.getWheelDiameterMM()) / 100f) * 10) / 10f;
@@ -611,7 +578,7 @@ public class MainActivity extends AppCompatActivity {
      * - какая будет реальная скорость при показаниях спидометра 60 км/ч
      * - какая будет реальная скорость при показаниях спидометра 90 км/ч
      */
-    private void setSpecification() {
+    private void showSpecification() {
 
         TextView change1_textView = findViewById(R.id.specification1);
         String change1 = "- ";
@@ -694,5 +661,59 @@ public class MainActivity extends AppCompatActivity {
         newJJSpinnerPosition = values.getInt(APP_PREFERENCES_NJSPOSITION, 6);
         oldETSpinnerPosition = values.getInt(APP_PREFERENCES_OESPOSITION, 27);
         newETSpinnerPosition = values.getInt(APP_PREFERENCES_NESPOSITION, 27);
+    }
+
+    /**
+     * Показывает дисклеймер
+     *
+     * Дисклеймер показывается только 1 раз в день
+     * Если пользователь отметил "не показывать больше, то дисклеймер не показывается никогда.
+     */
+    private void showDisclaimer() {
+        if (!dontShowDisclaimer && showDate != today.getMonth()*100 + today.getDate()) {
+            showDate = today.getMonth()*100 + today.getDate();
+            Intent disclaimer = new Intent(this, DisclaimerActivity.class);
+            startActivityForResult(disclaimer, DISCLAIMER_REQUEST_CODE);
+        }
+    }
+
+    /**
+     * Показывает предложение оценить приложение
+     *
+     * показывает вопрос первого уровня: Понравилось ли приложение?
+     * Если ответ "не очень", то показывает вопрос второго уровня: хотите дать совет?
+     *  Если ответ да, то открывает электронную почту с адресом для отзыва
+     *  Если ответ нет, то больше не показывает предложение оценить никогда.
+     * Если ответ "понравилось", то показывает вопрос второго уровня: хотите оценить?
+     *  Если ответ "да", то отправляет в плеймаркет для оценки
+     *  Если ответ "позже", то закрывает предложение оценить до следующего запуска приложения.
+     */
+    private void showRate() {
+        if (!dontShowRate) {
+            Intent rateIntent = new Intent(this, RateActivity.class);
+
+            Button rateYesButton = findViewById(R.id.rateYes_button);
+            rateYesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rateIntent.putExtra("likeApp", true);
+                    startActivityForResult(rateIntent, RATE_REQUEST_CODE);
+                }
+            });
+
+            Button rateNoButton = findViewById(R.id.rateNo_button);
+            rateNoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rateIntent.putExtra("likeApp", false);
+                    startActivityForResult(rateIntent, RATE_REQUEST_CODE);
+                }
+            });
+        } else {
+            LinearLayout rateLayout = findViewById(R.id.rate_layout);
+            ViewGroup.LayoutParams rate_layoutParams = rateLayout.getLayoutParams();
+            rate_layoutParams.height = (int) (0);
+            rateLayout.setLayoutParams(rate_layoutParams);
+        }
     }
 }
