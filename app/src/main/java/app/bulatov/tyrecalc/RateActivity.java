@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class RateActivity extends AppCompatActivity {
 
-    private boolean likeApp;
     public final static String DONT_SHOW = "app.bulatov.tyrecalc.DONT_SHOW";
 
     @Override
@@ -22,9 +21,9 @@ public class RateActivity extends AppCompatActivity {
         TextView text = findViewById(R.id.rate_textView);
         Button yesButton = findViewById(R.id.yesButton);
         Button noButton = findViewById(R.id.noButton);
-        likeApp = getIntent().getBooleanExtra("likeApp", true);
+        boolean isAppLiked = getIntent().getBooleanExtra("likeApp", true); ///< ответ на вопрос, понравилось ли приложение
 
-        if (likeApp) {
+        if (isAppLiked) {
             text.setText(R.string.wont_rate);
             yesButton.setText(R.string.rate);
             noButton.setText(R.string.late);
@@ -39,7 +38,7 @@ public class RateActivity extends AppCompatActivity {
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(likeApp){
+                if(isAppLiked){
                     Intent rateIntent = new Intent(Intent.ACTION_VIEW);
                     rateIntent.setData(Uri.parse("market://details?id=app.bulatov.tyrecalc"));
                     startActivity(rateIntent);
@@ -57,7 +56,7 @@ public class RateActivity extends AppCompatActivity {
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!likeApp){
+                if(!isAppLiked){
                     answerIntent.putExtra(DONT_SHOW, true);
                     setResult(RESULT_OK, answerIntent);
                 } else {

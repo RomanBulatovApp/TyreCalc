@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">TyreCalc DEBUG</string>
+    <string name="wheel_size">WHEEL SIZE</string>
+    <string name="standard">STANDARD</string>
+    <string name="new_">NEW</string>
+    <string name="wheel_width">TIRE WIDTH</string>
+    <string name="wheel_height">TIRE HEIGHT</string>
+    <string name="rim_diam">RIM DIAMETER</string>
+    <string name="rim_width">RIM WIDTH</string>
+    <string name="et">OFFSET</string>
+    <string name="changes">CHANGES</string>
+    <string name="speed_90">90 km/h =</string>
+    <string name="speed_60">60 km/h =</string>
+    <string name="disclaimer1">All calculations are approximate. When buying wheels, do not rely entirely on the results of calculations especially if the purchase takes place without fitting.
+        Install wheels in accordance with the vehicle manufacturer\'s recommendations. </string>
+    <string name="disclaimer2">Depending on the design of the rims, the calculated outer and inner boundaries of the wheels may be inaccurate, and the structural elements of the rim can protrude beyond these boundaries. </string>
+    <string name="dont_show_again">Don\'t show again</string>
+    <string name="ok">OK</string>
+    <string name="attention">ATTENTION!</string>
+    <string name="calculator">Wheel calculator</string>
+    <string name="standard_wheel">STANDARD WHEEL:\u0020</string>
+    <string name="new_wheel">NEW WHEEL:\u0020</string>
+    <string name="with_rim_width_of">With a rim width of\u0020</string>
+    <string name="recommended_tire_width_upto"> ", the recommended tire width is up to\u0020</string>
+    <string name="recommended_tire_width_from"> ", the recommended tire width is from\u0020</string>
+    <string name="mm">\u0020mm.</string>
+    <string name="diam_increase">The outer diameter of the wheel will increase by\u0020</string>
+    <string name="diam_decrease">The outer diameter of the wheel will decrease by\u0020</string>
+    <string name="recommended_change_percent">%. The recommended difference is no more than 3%.</string>
+    <string name="diameter_wont_change">The outer diameter won\'t change.</string>
+    <string name="clearance_increase">The vehicle\'s ground clearance will increase by\u0020</string>
+    <string name="clearance_decrease">The vehicle\'s ground clearance will decrease by\u0020</string>
+    <string name="clearance_wont_change">The vehicle\'s ground clearance won\'t change.</string>
+    <string name="outline_increase">The outer edge of the wheel will move outward by\u0020</string>
+    <string name="outline_decrease">The outer edge of the wheel will move inward by\u0020</string>
+    <string name="outline_wont_change">The outer edge of the wheel won\'t move.</string>
+    <string name="inline_increase">The inner edge of the wheel will move closer to the shock absorber by\u0020</string>
+    <string name="inline_decrease">The inner edge of the wheel will move further from the shock absorber by\u0020</string>
+    <string name="inline_wont_change">The inner edge of the wheel won\'t move.</string>
+    <string name="with_speedometer">- With a speedometer reading of\u0020</string>
+    <string name="speed_is">\u0020km/h, the real speed will be\u0020</string>
+    <string name="kmH">\u0020km/h.</string>
+    <string name="opinion">We value your opinion!</string>
+
+    <string name="do_you_like_app">DO YOU LIKE THE APP?</string>
+    <string name="like">I LIKE IT!</string>
+    <string name="dislike">NOT REALLY…</string>
+
+    <string name="wont_rate">WANT TO RATE?</string>
+    <string name="rate">RATE</string>
+    <string name="late">LATE</string>
+
+    <string name="do_app_better">WHAT NEEDS TO BE FIXED?</string>
+    <string name="advice">ADVICE</string>
+    <string name="dont_ask">DON\'T ASK</string>
+</resources>

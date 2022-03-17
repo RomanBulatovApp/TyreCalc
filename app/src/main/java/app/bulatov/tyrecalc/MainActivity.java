@@ -16,50 +16,31 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     private final Wheel oldWheel = new Wheel();
-    private ImageView oldWheel_imageView;
-    private ImageView oldWheelDiam_imageView;
-    private ImageView oldRimDiam_imageView;
-    private ImageView oldWheelCircuit_imageView;
-    private ImageView oldRimCircuit_imageView;
-    private TextView oldDiam_textView;
-
     private final Wheel newWheel = new Wheel();
-    private ImageView newWheel_imageView;
-    private ImageView newWheelDiam_imageView;
-    private ImageView newRimDiam_imageView;
-    private ImageView newWheelCircuit_imageView;
-    private ImageView newRimCircuit_imageView;
-    private TextView newDiam_textView;
-
-    private TextView newSpeed60_textView;
-    private TextView newSpeed90_textView;
-    private TextView outLine_textView;
-    private TextView inLine_textView;
-    private TextView upLine_textView;
-    private TextView downLine_textView;
-
-    private TextView caution_textView;
-    private TextView change1_textView;
-    private TextView change2_textView;
-    private TextView change3_textView;
-    private TextView change4_textView;
-    private TextView change5_textView;
-    private TextView change6_textView;
-
     static final private int DISCLAIMER_REQUEST_CODE = 1;
     static final private int RATE_REQUEST_CODE = 2;
     static Date today = new Date();
 
-    private boolean isDisclaimerShowed;
-    private final String APP_PREFERENCES = "values";
-    private int date;
+    private final String[] WIDTH_VARS = {"135", "145", "155", "165", "175", "185", "195", "205", "215", "225", "235", "245",
+            "255", "265", "275", "285", "295", "305", "315", "325", "335", "345", "355"};
+    private final String[] HEIGHT_VARS = {"25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85"};
+    private final String[] RIM_DIAMETERS_VARS = {"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
+    private final String[] JJ_VARS = {"4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5",
+            "10", "10.5", "11", "11.5", "12", "12.5", "13", "13.5", "14"};
+    private final String[] ET_VARS = {"80", "79", "76", "75", "71", "70", "69", "68", "67", "66", "65", "64", "63", "62", "61",
+            "60", "59", "58", "57", "56", "55", "54", "53", "52", "51", "50", "49", "48", "47", "46", "45", "44", "43", "42", "41",
+            "40", "39", "38", "37", "36", "35", "34", "33", "32", "31", "30", "29", "28", "27", "26", "25", "24", "23", "22", "21",
+            "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0",
+            "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12", "-13", "-14", "-15", "-16", "-17", "-18", "-19",
+            "-20", "-21", "-22", "-23", "-24", "-25", "-26", "-27", "-28", "-29", "-30", "-32", "-33", "-34", "-35", "-36", "-38",
+            "-40", "-44", "-45", "-46", "-48", "-50", "-55", "-65", "-72", "-76", "-88", "-98"};
+
+    private int showDate;
     private final String APP_PREFERENCES_DATE = "date";
     private boolean dontShowDisclaimer;
     private final String APP_PREFERENCES_DONT_SHOW_DISCLAIMER = "dontShowDisclaimer";
@@ -86,22 +67,16 @@ public class MainActivity extends AppCompatActivity {
     private int newETSpinnerPosition;
     private final String APP_PREFERENCES_NESPOSITION = "NESPosition";
     private SharedPreferences values;
-
-    private final String[] WIDTH_VARS = {"135", "145", "155", "165", "175", "185", "195", "205", "215", "225", "235", "245", "255", "265", "275", "285", "295", "305", "315", "325", "335", "345", "355"};
-    private final String[] HEIGHT_VARS = {"25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85"};
-    private final String[] RIM_DIAMETERS_VARS = {"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
-    private final String[] JJ_VARS = {"4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5", "12", "12.5", "13", "13.5", "14"};
-    private final String[] ET_VARS = {"80", "79", "76", "75", "71", "70", "69", "68", "67", "66", "65", "64", "63", "62", "61", "60", "59", "58", "57", "56", "55", "54", "53", "52", "51", "50", "49", "48", "47", "46", "45", "44", "43", "42", "41", "40", "39", "38", "37", "36", "35", "34", "33", "32", "31", "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12", "-13", "-14", "-15", "-16", "-17", "-18", "-19", "-20", "-21", "-22", "-23", "-24", "-25", "-26", "-27", "-28", "-29", "-30", "-32", "-33", "-34", "-35", "-36", "-38", "-40", "-44", "-45", "-46", "-48", "-50", "-55", "-65", "-72", "-76", "-88", "-98"};
+    private final String APP_PREFERENCES = "values";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("MAIN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
+        // достаем сохраненную информацию
         values = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        date = values.getInt(APP_PREFERENCES_DATE, 0);
+        showDate = values.getInt(APP_PREFERENCES_DATE, 0);
         dontShowDisclaimer = values.getBoolean(APP_PREFERENCES_DONT_SHOW_DISCLAIMER, false);
         dontShowRate = values.getBoolean(APP_PREFERENCES_DONT_SHOW_RATE, false);
         oldWidthSpinnerPosition = values.getInt(APP_PREFERENCES_OWSPOSITION, 8);
@@ -115,41 +90,40 @@ public class MainActivity extends AppCompatActivity {
         oldETSpinnerPosition = values.getInt(APP_PREFERENCES_OESPOSITION, 27);
         newETSpinnerPosition = values.getInt(APP_PREFERENCES_NESPOSITION, 27);
 
-        if (!dontShowDisclaimer && date != today.getMonth()*100 + today.getDate()) {
-            date = today.getMonth()*100 + today.getDate();
+        // Дисклеймер
+        if (!dontShowDisclaimer && showDate != today.getMonth()*100 + today.getDate()) {
+            showDate = today.getMonth()*100 + today.getDate();
             Intent disclaimer = new Intent(this, DisclaimerActivity.class);
             startActivityForResult(disclaimer, DISCLAIMER_REQUEST_CODE);
         }
 
+        // Оценить приложение
+        if (!dontShowRate) {
+            Intent rateIntent = new Intent(this, RateActivity.class);
 
-        oldWheel_imageView = findViewById(R.id.oldWheel_imageView);
-        oldWheelDiam_imageView = findViewById(R.id.oldWheelDiam_imageView);
-        oldRimDiam_imageView = findViewById(R.id.oldRimDiam_imageView);
-        oldWheelCircuit_imageView = findViewById(R.id.oldWheelCircuit_imageView);
-        oldRimCircuit_imageView = findViewById(R.id.oldRimCircuit_imageView);
-        oldDiam_textView = findViewById(R.id.oldDiam_textView);
+            Button rateYesButton = findViewById(R.id.rateYes_button);
+            rateYesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rateIntent.putExtra("likeApp", true);
+                    startActivityForResult(rateIntent, RATE_REQUEST_CODE);
+                }
+            });
 
-        newWheel_imageView = findViewById(R.id.newWheel_imageView);
-        newWheelDiam_imageView = findViewById(R.id.newWheelDiam_imageView);
-        newRimDiam_imageView = findViewById(R.id.newRimDiam_imageView);
-        newWheelCircuit_imageView = findViewById(R.id.newWheelCircuit_imageView);
-        newRimCircuit_imageView = findViewById(R.id.newRimCircuit_imageView);
-        newDiam_textView = findViewById(R.id.newDiam_textView);
-
-        newSpeed60_textView = findViewById(R.id.newSpeed60_textView);
-        newSpeed90_textView = findViewById(R.id.newSpeed90_textView);
-        outLine_textView = findViewById(R.id.outLine_textView);
-        inLine_textView = findViewById(R.id.inLine_textView);
-        upLine_textView = findViewById(R.id.upLine_textView);
-        downLine_textView = findViewById(R.id.downLine_textView);
-
-        caution_textView = findViewById(R.id.caution);
-        change1_textView = findViewById(R.id.specification1);
-        change2_textView = findViewById(R.id.specification2);
-        change3_textView = findViewById(R.id.specification3);
-        change4_textView = findViewById(R.id.specification4);
-        change5_textView = findViewById(R.id.specification5);
-        change6_textView = findViewById(R.id.specification6);
+            Button rateNoButton = findViewById(R.id.rateNo_button);
+            rateNoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rateIntent.putExtra("likeApp", false);
+                    startActivityForResult(rateIntent, RATE_REQUEST_CODE);
+                }
+            });
+        } else {
+            LinearLayout rateLayout = findViewById(R.id.rate_layout);
+            ViewGroup.LayoutParams rate_layoutParams = rateLayout.getLayoutParams();
+            rate_layoutParams.height = (int) (0);
+            rateLayout.setLayoutParams(rate_layoutParams);
+        }
 
         // Спинеры ширины
         ArrayAdapter<String> widthAdapter = new ArrayAdapter(this, R.layout.spinner_item, WIDTH_VARS);
@@ -370,43 +344,23 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-
-        if (dontShowRate) {
-            LinearLayout rateLayout = findViewById(R.id.rate_layout);
-            ViewGroup.LayoutParams rate_layoutParams = rateLayout.getLayoutParams();
-            rate_layoutParams.height = (int) (0);
-            rateLayout.setLayoutParams(rate_layoutParams);
-        } else {
-            Intent rateIntent = new Intent(this, RateActivity.class);
-            Button rateYesButton = findViewById(R.id.rateYes_button);
-            rateYesButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    rateIntent.putExtra("likeApp", true);
-                    startActivityForResult(rateIntent, RATE_REQUEST_CODE);
-                }
-            });
-            Button rateNoButton = findViewById(R.id.rateNo_button);
-            rateNoButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    rateIntent.putExtra("likeApp", false);
-                    startActivityForResult(rateIntent, RATE_REQUEST_CODE);
-                }
-            });
-        }
     }
 
+    /**
+     *Принимает и обрабатывает данные от активностей дисклеймера и оценки приложения
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        // устанавливет отемтку о непоказывании дисклеймера
         if (requestCode == DISCLAIMER_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 dontShowDisclaimer = data.getBooleanExtra(DisclaimerActivity.CHECKBOX, false);
             }
         }
+
+        // устанавливает отметку о непоказывании предложения оценить приложение, сворачивает предложение в текущей активности
         if (requestCode == RATE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 dontShowRate = data.getBooleanExtra(RateActivity.DONT_SHOW, false);
@@ -418,12 +372,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * сохраняет данные в память
+     */
     @Override
     protected void onPause() {
         super.onPause();
-        // Запоминаем данные
         SharedPreferences.Editor editor = values.edit();
-        editor.putInt(APP_PREFERENCES_DATE,date);
+        editor.putInt(APP_PREFERENCES_DATE, showDate);
         editor.putBoolean(APP_PREFERENCES_DONT_SHOW_DISCLAIMER, dontShowDisclaimer);
         editor.putBoolean(APP_PREFERENCES_DONT_SHOW_RATE, dontShowRate);
         editor.putInt(APP_PREFERENCES_OWSPOSITION, oldWidthSpinnerPosition);
@@ -439,8 +395,13 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /**
+     * применяет все введенные параметры
+     */
     private void apply() {
+        ImageView oldWheel_imageView = findViewById(R.id.oldWheel_imageView);
         setWheelView(oldWheel, oldWheel_imageView);
+        ImageView newWheel_imageView = findViewById(R.id.newWheel_imageView);
         setWheelView(newWheel, newWheel_imageView);
         setShapes();
         setCautions();
@@ -448,6 +409,9 @@ public class MainActivity extends AppCompatActivity {
         setSpecification();
     }
 
+    /**
+     * ставит изображение колеса из ресурсов в зависимости от его размеров
+     */
     private void setWheelView(Wheel wheel, ImageView wheel_imageView) {
         int et = wheel.getET();
         int jj = wheel.getJJ();
@@ -476,6 +440,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * устанавливает размеры схематичных изображений колес
+     */
     private void setShapes() {
 
         float oldWheelDiam = oldWheel.getWheelDiameterMM();
@@ -488,26 +455,37 @@ public class MainActivity extends AppCompatActivity {
         //Получаем параметры изображений схем:
 
         //параметры кругов старого колеса и диска
+        ImageView oldWheelDiam_imageView = findViewById(R.id.oldWheelDiam_imageView);
         ViewGroup.LayoutParams oldWheelDiam_layoutParams = oldWheelDiam_imageView.getLayoutParams();
+        ImageView oldRimDiam_imageView = findViewById(R.id.oldRimDiam_imageView);
         ViewGroup.LayoutParams oldRimDiam_layoutParams = oldRimDiam_imageView.getLayoutParams();
-        //параметры схем старого колеса и диска
+
+        //параметры прямоугольников старого колеса и диска
+        ImageView oldWheelCircuit_imageView = findViewById(R.id.oldWheelCircuit_imageView);
         ViewGroup.MarginLayoutParams oldWheelCircuitParams = (ViewGroup.MarginLayoutParams) oldWheelCircuit_imageView.getLayoutParams();
+        ImageView oldRimCircuit_imageView = findViewById(R.id.oldRimCircuit_imageView);
         ViewGroup.MarginLayoutParams oldRimCircuitParams = (ViewGroup.MarginLayoutParams) oldRimCircuit_imageView.getLayoutParams();
 
         //параметры кругов нового колеса и диска
+        ImageView newWheelDiam_imageView = findViewById(R.id.newWheelDiam_imageView);
         ViewGroup.LayoutParams newWheelDiam_layoutParams = newWheelDiam_imageView.getLayoutParams();
+        ImageView newRimDiam_imageView = findViewById(R.id.newRimDiam_imageView);
         ViewGroup.LayoutParams newRimDiam_layoutParams = newRimDiam_imageView.getLayoutParams();
-        //параметры схем нового колеса и диска
+
+        //параметры прямоугольников нового колеса и диска
+        ImageView newWheelCircuit_imageView = findViewById(R.id.newWheelCircuit_imageView);
         ViewGroup.MarginLayoutParams newWheelCircuitParams = (ViewGroup.MarginLayoutParams) newWheelCircuit_imageView.getLayoutParams();
+        ImageView newRimCircuit_imageView = findViewById(R.id.newRimCircuit_imageView);
         ViewGroup.MarginLayoutParams newRimCircuitParams = (ViewGroup.MarginLayoutParams) newRimCircuit_imageView.getLayoutParams();
 
         final float scale = getResources().getDisplayMetrics().density;
 
-        // получаем количество мм в одном dp: максимальный круг 190х190 dp, мы обозначим больший диаметр этим размером на схеме, а остальные рассчитаем от него.
+        // получаем количество мм в одном dp: максимальный круг 190х190 dp, мы обозначим больший из диаметров этим размером на схеме, а остальные рассчитаем от него.
         float mmInDp = Math.max(oldWheelDiam, newWheelDiam) / 180;
 
         // Изменяем размеры кругов и схем колес и дисков
-        // ставим размер и расположение круга и схемы старого колеса
+
+        // ставим размер и расположение круга и схемы шины старого колеса
         oldWheelDiam_layoutParams.width = (int) (oldWheelDiam / mmInDp * scale);
         oldWheelDiam_layoutParams.height = (int) (oldWheelDiam / mmInDp * scale);
         oldWheelDiam_imageView.setLayoutParams(oldWheelDiam_layoutParams);
@@ -518,6 +496,7 @@ public class MainActivity extends AppCompatActivity {
         }
         oldWheelCircuitParams.setMargins((int) ((oldWheel.getET() / mmInDp * scale)), 0, 0, 0);
         oldWheelCircuit_imageView.setLayoutParams(oldWheelCircuitParams);
+
         // ставим размер и расположение круга и схемы диска старого колеса
         oldRimDiam_layoutParams.width = (int) (oldRimDiam / mmInDp * scale);
         oldRimDiam_layoutParams.height = (int) (oldRimDiam / mmInDp * scale);
@@ -529,7 +508,8 @@ public class MainActivity extends AppCompatActivity {
         }
         oldRimCircuitParams.setMargins((int) ((oldWheel.getET() / mmInDp * scale)), 0, 0, 0);
         oldRimCircuit_imageView.setLayoutParams(oldRimCircuitParams);
-        // ставим размер и расположение круга и схемы нового колеса
+
+        // ставим размер и расположение круга и схемы шины нового колеса
         newWheelDiam_layoutParams.width = (int) (newWheelDiam / mmInDp * scale);
         newWheelDiam_layoutParams.height = (int) (newWheelDiam / mmInDp * scale);
         newWheelDiam_imageView.setLayoutParams(newWheelDiam_layoutParams);
@@ -540,6 +520,7 @@ public class MainActivity extends AppCompatActivity {
         }
         newWheelCircuitParams.setMargins((int) ((newWheel.getET() / mmInDp * scale)), 0, 0, 0);
         newWheelCircuit_imageView.setLayoutParams(newWheelCircuitParams);
+
         // ставим размер и расположение круга и схемы диска нового колеса
         newRimDiam_layoutParams.width = (int) (newRimDiam / mmInDp * scale);
         newRimDiam_layoutParams.height = (int) (newRimDiam / mmInDp * scale);
@@ -553,12 +534,25 @@ public class MainActivity extends AppCompatActivity {
         newRimCircuit_imageView.setLayoutParams(newRimCircuitParams);
     }
 
+    /**
+     * выводит числовые показатели изменений на схемах колес
+     */
     private void setSigns() {
+
+        TextView oldDiam_textView = findViewById(R.id.oldDiam_textView);
         oldDiam_textView.setText(String.valueOf(oldWheel.getWheelDiameterMM()));
+
+        TextView newDiam_textView = findViewById(R.id.newDiam_textView);
         newDiam_textView.setText(String.valueOf(newWheel.getWheelDiameterMM()));
+
+        TextView newSpeed60_textView = findViewById(R.id.newSpeed60_textView);
         newSpeed60_textView.setText(newWheel.getSpeed60(oldWheel.getWheelDiameterMM()) + getResources().getString(R.string.kmH));
+
+        TextView newSpeed90_textView = findViewById(R.id.newSpeed90_textView);
         newSpeed90_textView.setText(newWheel.getSpeed90(oldWheel.getWheelDiameterMM()) + getResources().getString(R.string.kmH));
 
+        TextView upLine_textView = findViewById(R.id.upLine_textView);
+        TextView downLine_textView = findViewById(R.id.downLine_textView);
         float horizonLine = Math.round(newWheel.getWheelDiameterMM() * 10 - oldWheel.getWheelDiameterMM() * 10) / 20f;
         if ((horizonLine) > 0) {
             upLine_textView.setText("+" + horizonLine);
@@ -568,6 +562,7 @@ public class MainActivity extends AppCompatActivity {
             downLine_textView.setText(String.valueOf(horizonLine));
         }
 
+        TextView outLine_textView = findViewById(R.id.outLine_textView);
         int outLine = (newWheel.getOutLine() - oldWheel.getOutLine());
         if ((outLine) > 0) {
             outLine_textView.setText("+" + outLine);
@@ -575,6 +570,7 @@ public class MainActivity extends AppCompatActivity {
             outLine_textView.setText(String.valueOf(outLine));
         }
 
+        TextView inLine_textView = findViewById(R.id.inLine_textView);
         int inLine = (newWheel.getInLine() - oldWheel.getInLine());
         if ((inLine) > 0) {
             inLine_textView.setText("+" + inLine);
@@ -583,6 +579,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * выводит предупреждения
+     * если внешний диаметр колеса изменится более, чем на 3%, укажет на сколько % изменился диаметр
+     * для кождого колеса (стандартного и нового) выводит свое уведомление, если
+     *    - ширина шины меньше минимальной при данной ширине диска
+     *    - ширина шины большще максимально допустимой при данной ширине диска
+     */
     private void setCautions() {
         String caution = "";
 
@@ -610,11 +613,22 @@ public class MainActivity extends AppCompatActivity {
                     getResources().getString(R.string.recommended_tire_width_from) + newWheel.getMinWidth() + getResources().getString(R.string.mm) + "\n";
         }
 
+        TextView caution_textView = findViewById(R.id.caution);
         caution_textView.setText(caution);
     }
 
+    /**
+     * выводит описания изменений в текстовом формате
+     * - на сколько измениятся внешний диаметр колеса
+     * - на сколько изменится клиренс
+     * - на сколько и куда сместится внешняя граница колеса
+     * - на сколько и куда сместится внутренняя граница колеса
+     * - какая будет реальная скорость при показаниях спидометра 60 км/ч
+     * - какая будет реальная скорость при показаниях спидометра 90 км/ч
+     */
     private void setSpecification() {
 
+        TextView change1_textView = findViewById(R.id.specification1);
         String change1 = "- ";
         float changeDiameter = Math.round(newWheel.getWheelDiameterMM() * 10 - oldWheel.getWheelDiameterMM() * 10) / 10f;
         if (changeDiameter > 0)
@@ -624,6 +638,7 @@ public class MainActivity extends AppCompatActivity {
         else change1 = change1 + getResources().getString(R.string.diameter_wont_change);
         change1_textView.setText(change1);
 
+        TextView change2_textView = findViewById(R.id.specification2);
         String change2 = "- ";
         float clearanceChange = Math.round(newWheel.getWheelDiameterMM() * 10 - oldWheel.getWheelDiameterMM() * 10) / 20f;
         if (clearanceChange > 0)
@@ -633,6 +648,7 @@ public class MainActivity extends AppCompatActivity {
         else change2 = change2 + getResources().getString(R.string.clearance_wont_change);
         change2_textView.setText(change2);
 
+        TextView change3_textView = findViewById(R.id.specification3);
         String change3 = "- ";
         int outLineChange = newWheel.getOutLine() - oldWheel.getOutLine();
         if (outLineChange > 0)
@@ -642,6 +658,7 @@ public class MainActivity extends AppCompatActivity {
         else change3 = change3 + getResources().getString(R.string.outline_wont_change);
         change3_textView.setText(change3);
 
+        TextView change4_textView = findViewById(R.id.specification4);
         String change4 = "- ";
         int inLineChange = newWheel.getInLine() - oldWheel.getInLine();
         if (inLineChange > 0)
@@ -652,17 +669,23 @@ public class MainActivity extends AppCompatActivity {
         change4_textView.setText(change4);
 
 
+        TextView change5_textView = findViewById(R.id.specification5);
         int speed1 = 60;
         String speedometerChange1 = getResources().getString(R.string.with_speedometer) + speed1 + getResources().getString(R.string.speed_is) +
                 newWheel.getSpeed60(oldWheel.getWheelDiameterMM()) + getResources().getString(R.string.kmH);
         change5_textView.setText(speedometerChange1);
 
+        TextView change6_textView = findViewById(R.id.specification6);
         int speed2 = 90;
         String speedometerChange2 = getResources().getString(R.string.with_speedometer) + speed2 + getResources().getString(R.string.speed_is) +
                 newWheel.getSpeed90(oldWheel.getWheelDiameterMM()) + getResources().getString(R.string.kmH);
         change6_textView.setText(speedometerChange2);
     }
 
+    /**
+     * Возвращает текстовое представление числа
+     * если число целое, возвращает число без точки и нулей за ней
+     */
     private String numToString(float num) {
         if (num % 1 == 0.0) return String.valueOf((int) num);
         else return String.valueOf(num);

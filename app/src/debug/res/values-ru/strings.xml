@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">TyreCalc DEBUG</string>
+    <string name="wheel_size">РАЗМЕР КОЛЕС</string>
+    <string name="standard">СТАНДАРТНОЕ</string>
+    <string name="new_">НОВОЕ</string>
+    <string name="wheel_width">ШИРИНА ШИНЫ</string>
+    <string name="wheel_height">ПРОФИЛЬ</string>
+    <string name="rim_diam">ДИАМЕТР ДИСКА</string>
+    <string name="rim_width">ШИРИНА ДИСКА</string>
+    <string name="et">ВЫЛЕТ</string>
+    <string name="changes">ИЗМЕНЕНИЯ</string>
+    <string name="speed_90">90 км/ч =</string>
+    <string name="speed_60">60 км/ч =</string>
+    <string name="disclaimer1">Все расчеты являются ориентировочными. При покупке колес не стоит полностью полагаться на результаты расчетов,
+        особенно если покупка происходит без примерки. Устанавливайте колеса в соответствии с рекомендациями производителя автомобиля.</string>
+    <string name="disclaimer2">В засивимости от конструкции дисков, рассчитанные внешние и внутренние границы колес могут быть не точными, так же конструктивные элементы диска могут выступать за эти границы. </string>
+    <string name="dont_show_again">Больше не показывать.</string>
+    <string name="ok">OK</string>
+    <string name="attention">Внимание!</string>
+    <string name="calculator">Шинный калькулятор</string>
+    <string name="standard_wheel">СТАНДАРТНОЕ КОЛЕСО:\u0020</string>
+    <string name="new_wheel">НОВОЕ КОЛЕСО:\u0020</string>
+    <string name="with_rim_width_of">При ширине диска\u0020</string>
+    <string name="recommended_tire_width_upto">\", рекомендуеамая ширина шины до\u0020</string>
+    <string name="recommended_tire_width_from">\", рекомендуеамая ширина шины от\u0020</string>
+    <string name="mm">\u0020мм.</string>
+    <string name="diam_decrease">Диаметр колеса уменьшится на\u0020</string>
+    <string name="diam_increase">Диаметр колеса увеличится на\u0020</string>
+    <string name="recommended_change_percent">%. Рекомендуемая разница не более 3%.</string>
+    <string name="diameter_wont_change">Диаметр колеса не изменится.</string>
+    <string name="clearance_increase">Клиренс автомобиля увеличится на\u0020</string>
+    <string name="clearance_decrease">Клиренс автомобиля уменьшится на\u0020</string>
+    <string name="clearance_wont_change">Клиренс автомобиля не изменится.</string>
+    <string name="outline_increase">Внешняя плоскость колеса сместится наружу на\u0020</string>
+    <string name="outline_decrease">Внешняя плоскость колеса сместится внутрь на\u0020</string>
+    <string name="outline_wont_change">Внешняя плоскость колеса не сместится.</string>
+    <string name="inline_increase">Внутренняя плоскость колеса сместится ближе к стойке на\u0020</string>
+    <string name="inline_decrease">Внутренняя плоскость колеса сместится дальше от стойки на\u0020</string>
+    <string name="inline_wont_change">Внутренняя плоскость колеса не сместится.</string>
+    <string name="with_speedometer">- При показаниях спидометра\u0020</string>
+    <string name="speed_is">\u0020км/ч реальная скорость составит\u0020</string>
+    <string name="kmH">\u0020км/ч.</string>
+    <string name="opinion">Нам важно ваше мнение!</string>
+
+    <string name="do_you_like_app">ПОНРАВИЛОСЬ ПРИЛОЖЕНИЕ?</string>
+    <string name="like">ПОНРАВИЛОСЬ</string>
+    <string name="dislike">НЕ ОЧЕНЬ…</string>
+
+    <string name="wont_rate">ХОТИТЕ ОЦЕНИТЬ?</string>
+    <string name="rate">ОЦЕНИТЬ</string>
+    <string name="late">ПОЗЖЕ</string>
+
+    <string name="do_app_better">ЧТО НУЖНО ИСПРАВИТЬ?</string>
+    <string name="advice">ДАТЬ СОВЕТ</string>
+    <string name="dont_ask">НЕ СПРАШИВАТЬ</string>
+</resources>
