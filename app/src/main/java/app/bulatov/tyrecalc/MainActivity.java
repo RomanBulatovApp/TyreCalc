@@ -67,28 +67,13 @@ public class MainActivity extends AppCompatActivity {
     private int newETSpinnerPosition;
     private final String APP_PREFERENCES_NESPOSITION = "NESPosition";
     private SharedPreferences values;
-    private final String APP_PREFERENCES = "values";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // достаем сохраненную информацию
-        values = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        showDate = values.getInt(APP_PREFERENCES_DATE, 0);
-        dontShowDisclaimer = values.getBoolean(APP_PREFERENCES_DONT_SHOW_DISCLAIMER, false);
-        dontShowRate = values.getBoolean(APP_PREFERENCES_DONT_SHOW_RATE, false);
-        oldWidthSpinnerPosition = values.getInt(APP_PREFERENCES_OWSPOSITION, 8);
-        newWidthSpinnerPosition = values.getInt(APP_PREFERENCES_NWSPOSITION, 8);
-        oldHeightSpinnerPosition = values.getInt(APP_PREFERENCES_OHSPOSITION, 5);
-        newHeightSpinnerPosition = values.getInt(APP_PREFERENCES_NHSPOSITION, 5);
-        oldRimDiamSpinnerPosition = values.getInt(APP_PREFERENCES_ORSPOSITION, 5);
-        newRimDiamSpinnerPosition = values.getInt(APP_PREFERENCES_NRSPOSITION, 5);
-        oldJJSpinnerPosition = values.getInt(APP_PREFERENCES_OJSPOSITION, 6);
-        newJJSpinnerPosition = values.getInt(APP_PREFERENCES_NJSPOSITION, 6);
-        oldETSpinnerPosition = values.getInt(APP_PREFERENCES_OESPOSITION, 27);
-        newETSpinnerPosition = values.getInt(APP_PREFERENCES_NESPOSITION, 27);
+        getSavedParam();
 
         // Дисклеймер
         if (!dontShowDisclaimer && showDate != today.getMonth()*100 + today.getDate()) {
@@ -689,5 +674,25 @@ public class MainActivity extends AppCompatActivity {
     private String numToString(float num) {
         if (num % 1 == 0.0) return String.valueOf((int) num);
         else return String.valueOf(num);
+    }
+
+    /**
+     * Инициализирует переменные сохраненными значениями или значениями по умолчанию
+     */
+    private void getSavedParam() {
+        values = getSharedPreferences("values", Context.MODE_PRIVATE);
+        showDate = values.getInt(APP_PREFERENCES_DATE, 0);
+        dontShowDisclaimer = values.getBoolean(APP_PREFERENCES_DONT_SHOW_DISCLAIMER, false);
+        dontShowRate = values.getBoolean(APP_PREFERENCES_DONT_SHOW_RATE, false);
+        oldWidthSpinnerPosition = values.getInt(APP_PREFERENCES_OWSPOSITION, 8);
+        newWidthSpinnerPosition = values.getInt(APP_PREFERENCES_NWSPOSITION, 8);
+        oldHeightSpinnerPosition = values.getInt(APP_PREFERENCES_OHSPOSITION, 5);
+        newHeightSpinnerPosition = values.getInt(APP_PREFERENCES_NHSPOSITION, 5);
+        oldRimDiamSpinnerPosition = values.getInt(APP_PREFERENCES_ORSPOSITION, 5);
+        newRimDiamSpinnerPosition = values.getInt(APP_PREFERENCES_NRSPOSITION, 5);
+        oldJJSpinnerPosition = values.getInt(APP_PREFERENCES_OJSPOSITION, 6);
+        newJJSpinnerPosition = values.getInt(APP_PREFERENCES_NJSPOSITION, 6);
+        oldETSpinnerPosition = values.getInt(APP_PREFERENCES_OESPOSITION, 27);
+        newETSpinnerPosition = values.getInt(APP_PREFERENCES_NESPOSITION, 27);
     }
 }
