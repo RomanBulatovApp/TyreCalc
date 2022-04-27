@@ -37,8 +37,8 @@
     <string name="inline_increase">Внутренняя плоскость колеса сместится ближе к стойке на\u0020</string>
     <string name="inline_decrease">Внутренняя плоскость колеса сместится дальше от стойки на\u0020</string>
     <string name="inline_wont_change">Внутренняя плоскость колеса не сместится.</string>
-    <string name="with_speedometer">- При показаниях спидометра\u0020</string>
-    <string name="speed_is">\u0020км/ч реальная скорость составит\u0020</string>
+    <string name="with_speedometer_reeds">- При показаниях спидометра\u0020</string>
+    <string name="real_speed_is">\u0020км/ч реальная скорость составит\u0020</string>
     <string name="kmH">\u0020км/ч.</string>
     <string name="opinion">Нам важно ваше мнение!</string>
 

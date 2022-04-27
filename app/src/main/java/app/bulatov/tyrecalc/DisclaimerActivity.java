@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 
 public class DisclaimerActivity extends AppCompatActivity {
 
-    public final static String CHECKBOX = "app.bulatov.tyrecalc.CHECKBOX";
+    public final static String DISCLAIMER_KEY = "app.bulatov.tyrecalc.DISCLAIMER_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,13 +18,13 @@ public class DisclaimerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_disclaimer);
 
         CheckBox dontShow = findViewById(R.id.dontShow_checkBox);
-        Button ok = findViewById(R.id.ok_button);
+        Button ok_button = findViewById(R.id.ok_button);
 
-        ok.setOnClickListener(new View.OnClickListener() {
+        ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent answerIntent = new Intent();
-                answerIntent.putExtra(CHECKBOX, dontShow.isChecked());
+                answerIntent.putExtra(DISCLAIMER_KEY, dontShow.isChecked());
                 setResult(RESULT_OK, answerIntent);
                 finish();
             }

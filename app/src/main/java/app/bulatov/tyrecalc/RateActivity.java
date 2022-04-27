@@ -11,7 +11,8 @@ import android.widget.TextView;
 
 public class RateActivity extends AppCompatActivity {
 
-    public final static String DONT_SHOW = "app.bulatov.tyrecalc.DONT_SHOW";
+    public final static String NEED_RATE_SHOW_KEY = "app.bulatov.tyrecalc.NEED_RATE_SHOW_KEY";
+    public final static String IS_RATE_SHOWED_KEY = "app.bulatov.tyrecalc.IS_RATE_SHOWED_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class RateActivity extends AppCompatActivity {
         TextView text = findViewById(R.id.rate_textView);
         Button yesButton = findViewById(R.id.yesButton);
         Button noButton = findViewById(R.id.noButton);
-        boolean isAppLiked = getIntent().getBooleanExtra("likeApp", true); ///< ответ на вопрос, понравилось ли приложение
+        boolean isAppLiked = getIntent().getBooleanExtra("likeApp", true);
 
         if (isAppLiked) {
             text.setText(R.string.wont_rate);
@@ -47,24 +48,28 @@ public class RateActivity extends AppCompatActivity {
                     adviceIntent.setData(Uri.parse("mailto:info@bulatov.app"));
                     startActivity(adviceIntent);
                 }
-                answerIntent.putExtra(DONT_SHOW, true);
-                setResult(RESULT_OK, answerIntent);
-                finish();
+                answerIntent.putExtra(NEED_RATE_SHOW_KEY, false);
+                finishActivity(answerIntent);
             }
         });
 
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isAppLiked){
-                    answerIntent.putExtra(DONT_SHOW, true);
-                    setResult(RESULT_OK, answerIntent);
+                if(isAppLiked){
+                    answerIntent.putExtra(NEED_RATE_SHOW_KEY, true);
+                    finishActivity(answerIntent);
                 } else {
-                    answerIntent.putExtra(DONT_SHOW, false);
-                    setResult(RESULT_OK, answerIntent);
+                    answerIntent.putExtra(NEED_RATE_SHOW_KEY, false);
+                    finishActivity(answerIntent);
                 }
-                finish();
             }
         });
+    }
+
+    private void finishActivity(Intent answerIntent) {
+        answerIntent.putExtra(IS_RATE_SHOWED_KEY, true);
+        setResult(RESULT_OK, answerIntent);
+        finish();
     }
 }

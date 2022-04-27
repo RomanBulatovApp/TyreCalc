@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tyre_text"
+                android:id="@+id/wheelSizeHeader_textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
@@ -43,7 +43,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/old_textView"
+                    android:id="@+id/oldWheelTitle_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30dp"
@@ -55,7 +55,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/new_textView"
+                    android:id="@+id/newWheelTitle_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -98,7 +98,7 @@
                         tools:ignore="MissingConstraints" />
 
                     <TextView
-                        android:id="@+id/oldWidth_textView"
+                        android:id="@+id/oldTireWidth_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -123,7 +123,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/oldHeight_textView"
+                        android:id="@+id/oldTireHeight_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
@@ -171,7 +171,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/width_layout"
+                        android:id="@+id/tireWidthSpinners_layout"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="4dp"
@@ -179,7 +179,7 @@
                         android:orientation="horizontal">
 
                         <Spinner
-                            android:id="@+id/oldWidth_spinner"
+                            android:id="@+id/oldTireWidth_spinner"
                             style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
@@ -187,7 +187,7 @@
                             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         <TextView
-                            android:id="@+id/width_text"
+                            android:id="@+id/tireWidthSpinners_textView"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -198,7 +198,7 @@
                             android:textSize="14sp" />
 
                         <Spinner
-                            android:id="@+id/newWidth_spinner"
+                            android:id="@+id/newTireWidth_spinner"
                             style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
@@ -208,7 +208,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/height_layout"
+                        android:id="@+id/tireHeightSpinners_layout"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
@@ -217,7 +217,7 @@
                         android:orientation="horizontal">
 
                         <Spinner
-                            android:id="@+id/oldHeight_spinner"
+                            android:id="@+id/oldTireHeight_spinner"
                             style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
@@ -225,7 +225,7 @@
                             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         <TextView
-                            android:id="@+id/height_text"
+                            android:id="@+id/tireHeightSpinners_textView"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -237,7 +237,7 @@
                             android:textSize="14sp" />
 
                         <Spinner
-                            android:id="@+id/newHeight_spinner"
+                            android:id="@+id/newTireHeight_spinner"
                             style="@style/Widget.AppCompat.DropDownItem.Spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
@@ -247,7 +247,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/radius_layout"
+                        android:id="@+id/rimDiameter_layout"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
@@ -264,7 +264,7 @@
                             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         <TextView
-                            android:id="@+id/radius_text"
+                            android:id="@+id/rimDiamSpinners_textView"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -301,7 +301,7 @@
                             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         <TextView
-                            android:id="@+id/JJ_textView"
+                            android:id="@+id/JJSpinners_textView"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -337,7 +337,7 @@
                             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         <TextView
-                            android:id="@+id/ET_text"
+                            android:id="@+id/ETSpinners_textView"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -378,7 +378,7 @@
                         tools:ignore="MissingConstraints" />
 
                     <TextView
-                        android:id="@+id/newWidth_textView"
+                        android:id="@+id/newTireWidth_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -403,7 +403,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/newHeight_textView"
+                        android:id="@+id/newTireHeight_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
@@ -446,7 +446,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/caution"
+                android:id="@+id/caution_textWiew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -488,7 +488,7 @@
                         app:backgroundTint="@color/gray" />
 
                     <TextView
-                        android:id="@+id/rate_text"
+                        android:id="@+id/rateRequest_textView"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -512,7 +512,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/result_text"
+                android:id="@+id/changesHeader_textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
@@ -545,7 +545,7 @@
                     android:background="@color/white">
 
                     <ImageView
-                        android:id="@+id/oldWheelDiam_imageView"
+                        android:id="@+id/oldWheelCircle_imageView"
                         android:layout_width="180dp"
                         android:layout_height="180dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -555,7 +555,7 @@
                         app:srcCompat="@drawable/circle1" />
 
                     <ImageView
-                        android:id="@+id/oldRimDiam_imageView"
+                        android:id="@+id/oldRimCircle_imageView"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -591,7 +591,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/oldDiam_textView"
+                        android:id="@+id/oldWheelDiam_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -612,7 +612,7 @@
                     android:background="@color/white">
 
                     <ImageView
-                        android:id="@+id/newWheelDiam_imageView"
+                        android:id="@+id/newWheelCircle_imageView"
                         android:layout_width="190dp"
                         android:layout_height="190dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -622,7 +622,7 @@
                         app:srcCompat="@drawable/circle1" />
 
                     <ImageView
-                        android:id="@+id/newRimDiam_imageView"
+                        android:id="@+id/newRimCircle_imageView"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -632,7 +632,7 @@
                         app:srcCompat="@drawable/circle2" />
 
                     <TextView
-                        android:id="@+id/newSpeed60_textView"
+                        android:id="@+id/realSpeed60_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -646,7 +646,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/newSpeed90_textView"
+                        android:id="@+id/realSpeed90_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -660,7 +660,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/newDiam_textView"
+                        android:id="@+id/newWheelDiam_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
@@ -694,10 +694,10 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/hub_image2" />
+                        app:srcCompat="@drawable/hub_image" />
 
                     <ImageView
-                        android:id="@+id/oldWheelCircuit_imageView"
+                        android:id="@+id/oldWheelRectangle_imageView"
                         android:layout_width="50dp"
                         android:layout_height="180dp"
                         android:layout_marginEnd="20dp"
@@ -711,7 +711,7 @@
                         tools:ignore="ImageContrastCheck" />
 
                     <ImageView
-                        android:id="@+id/oldRimCircuit_imageView"
+                        android:id="@+id/oldRimRectangle_imageView"
                         android:layout_width="50dp"
                         android:layout_height="100dp"
                         android:layout_marginEnd="20dp"
@@ -725,7 +725,7 @@
                         tools:ignore="ImageContrastCheck" />
 
                     <ImageView
-                        android:id="@+id/newWheelCircuit_imageView"
+                        android:id="@+id/newWheelRectangle_imageView"
                         android:layout_width="60dp"
                         android:layout_height="190dp"
                         android:layout_marginEnd="20dp"
@@ -738,7 +738,7 @@
                         app:srcCompat="@drawable/new_wheel_circuit" />
 
                     <ImageView
-                        android:id="@+id/newRimCircuit_imageView"
+                        android:id="@+id/newRimRectangle_imageView"
                         android:layout_width="60dp"
                         android:layout_height="120dp"
                         android:layout_marginEnd="20dp"
@@ -751,7 +751,7 @@
                         app:srcCompat="@drawable/new_wheel_circuit2" />
 
                     <TextView
-                        android:id="@+id/upLine_textView"
+                        android:id="@+id/upLineChange_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -761,7 +761,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/downLine_textView"
+                        android:id="@+id/downLineChange_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -771,7 +771,7 @@
                         app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
-                        android:id="@+id/outLine_textView"
+                        android:id="@+id/outLineChange_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
@@ -808,28 +808,28 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/specification1"
+                        android:id="@+id/wheelDiamChangeDescription_textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/specification2"
+                        android:id="@+id/clearanceChangeDescription_textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/specification3"
+                        android:id="@+id/outLineChangeDescription_textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/specification4"
+                        android:id="@+id/inLineChangeDescription_textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -851,14 +851,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/specification5"
+                    android:id="@+id/speed60ChangeDescription_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/specification6"
+                    android:id="@+id/speed90ChangeDescription_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"

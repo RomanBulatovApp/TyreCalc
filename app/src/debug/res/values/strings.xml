@@ -37,8 +37,8 @@
     <string name="inline_increase">The inner edge of the wheel will move closer to the shock absorber by\u0020</string>
     <string name="inline_decrease">The inner edge of the wheel will move further from the shock absorber by\u0020</string>
     <string name="inline_wont_change">The inner edge of the wheel won\'t move.</string>
-    <string name="with_speedometer">- With a speedometer reading of\u0020</string>
-    <string name="speed_is">\u0020km/h, the real speed will be\u0020</string>
+    <string name="with_speedometer_reeds">- With a speedometer reading of\u0020</string>
+    <string name="real_speed_is">\u0020km/h, the real speed will be\u0020</string>
     <string name="kmH">\u0020km/h.</string>
     <string name="opinion">We value your opinion!</string>
 
